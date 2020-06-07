@@ -1,0 +1,4 @@
+/opt/Projects/PhpPlaisio/menu-core/vendor/plaisio/babel-core/lib/psql/**/*.psql
+/opt/Projects/PhpPlaisio/menu-core/vendor/plaisio/core/lib/psql/**/*.psql
+/opt/Projects/PhpPlaisio/menu-core/vendor/plaisio/authority-core/lib/psql/**/*.psql
+/opt/Projects/PhpPlaisio/menu-core/lib/psql/**/*.psql

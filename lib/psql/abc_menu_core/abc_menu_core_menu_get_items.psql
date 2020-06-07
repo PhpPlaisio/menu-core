@@ -1,0 +1,32 @@
+/**
+ * Selects items of a menu.
+ *
+ * @param p_mnu_id The ID of the menu.
+ * @param p_lan_id The ID of the language for linguistic entities.
+ */
+create procedure abc_menu_core_menu_get_items(in p_mnu_id @abc_menu_cache.mnu_id%type@,
+                                              in p_lan_id @abc_babel_word_text.lan_id%type@)
+reads sql data
+-- type: rows
+begin
+  select mni.mni_id
+  ,      mni.mni_id_parent
+  ,      mni.mnu_id
+  ,      mni.wrd_id
+  ,      mni.mni_hide_anonymous
+  ,      mni.mni_hide_identified
+  ,      mni.mni_depth
+  ,      mni.mni_weight
+
+  ,      wdt.wdt_text        mni_text
+
+  ,      pag.pag_id
+  ,      pag.pag_alias
+  from      ABC_MENU_ITEM       mni
+  join      ABC_BABEL_WORD_TEXT wdt  on  wdt.wrd_id = mni.wrd_id and
+                                         wdt.lan_id = p_lan_id
+  left join AUT_PAGE            pag  on  pag.pag_id = mni.pag_id
+  where  mni.mnu_id = p_mnu_id
+  order by mni.mni_weight
+  ;
+end

@@ -1,0 +1,31 @@
+/**
+ * Caches the HTML code of a menu.
+ *
+ * @param p_cmp_id   The ID of the company (safe guard).
+ * @param p_mnu_id   The ID of the menu.
+ * @param p_lan_id   The ID of the language for linguistic entities.
+ * @param p_pro_id   The ID of the profile.
+ * @param p_mnc_html The HTML code of the menu.
+ */
+create procedure abc_menu_core_cache_put(in p_cmp_id   @abc_menu_cache.cmp_id%type@,
+                                         in p_mnu_id   @abc_menu_cache.mnu_id%type@,
+                                         in p_lan_id   @abc_menu_cache.lan_id%type@,
+                                         in p_pro_id   @abc_menu_cache.pro_id%type@,
+                                         in p_mnc_html @abc_menu_cache.mnc_html%type@)
+reads sql data
+-- type: none
+begin
+  insert into ABC_MENU_CACHE(mnu_id
+  ,                          cmp_id
+  ,                          lan_id
+  ,                          pro_id
+  ,                          mnc_html)
+  values( p_cmp_id
+  ,       p_mnu_id
+  ,       p_lan_id
+  ,       p_pro_id
+  ,       p_mnc_html )
+  on duplicate key
+  update mnc_html = p_mnc_html
+  ;
+end

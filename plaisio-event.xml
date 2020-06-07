@@ -1,0 +1,7 @@
+<event>
+    <notify>
+        <handler>\Plaisio\Menu\CoreMenuEventHandler::handleChangedProfileEvent</handler>
+        <handler>\Plaisio\Menu\CoreMenuEventHandler::handleFlushAllCacheEvent</handler>
+        <handler>\Plaisio\Menu\CoreMenuEventHandler::handleObsoleteProfileEvent</handler>
+    </notify>
+</event>

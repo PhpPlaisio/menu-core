@@ -1,0 +1,10 @@
+/.idea/
+/.phpunit.result.cache
+/bin/
+/composer.lock
+/lib/psql/babel-core
+/test/coverage.xml
+/test/etc/columns.txt
+/test/etc/routines.json
+/test/report/
+/vendor/

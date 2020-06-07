@@ -1,0 +1,17 @@
+/**
+ * Selects details of a menu.
+ *
+ * @param p_mnu_id The ID of the menu.
+ */
+create procedure abc_menu_core_menu_get_details(in p_mnu_id @abc_menu_cache.mnu_id%type@)
+reads sql data
+-- type: row1
+begin
+  select mnu_id
+  ,      mnu_name
+  ,      mnu_class
+  ,      mnu_label
+  from   ABC_MENU
+  where  mnu_id = p_mnu_id
+  ;
+end
