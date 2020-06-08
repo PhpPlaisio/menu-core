@@ -16,7 +16,8 @@
     "plaisio/kernel": "^3.0",
     "plaisio/menu": "dev-master",
     "plaisio/profile": "dev-master",
-    "plaisio/session": "^3.0"
+    "plaisio/session": "^3.0",
+    "plaisio/web-assets": "^1.2"
   },
   "require-dev": {
     "ext-mysqli": "*",
