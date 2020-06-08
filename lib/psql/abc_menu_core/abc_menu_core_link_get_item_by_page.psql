@@ -10,10 +10,9 @@ reads sql data
 -- type:   singleton0
 -- return: int|null
 begin
-  select mni.mni_id
-  from ABC_MENU_ITEM      mni
-  join ABC_MENU_ITEM_PAGE mip  on  mip.mni_id = mni.mni_id
-  where  mni.mnu_id = p_mnu_id
-  and    mip.pag_id = p_pag_id
+  select mni_id
+  from ABC_MENU_ITEM_PAGE
+  where  mnu_id = p_mnu_id
+  and    pag_id = p_pag_id
   ;
 end

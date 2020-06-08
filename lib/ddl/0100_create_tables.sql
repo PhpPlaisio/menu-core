@@ -2,7 +2,7 @@
 /* DDL SCRIPT                                                                     */
 /*================================================================================*/
 /*  Title    :                                                                    */
-/*  FileName : menu.ecm                                                           */
+/*  FileName : menu-core.ecm                                                      */
 /*  Platform : MySQL 5                                                            */
 /*  Version  : Concept                                                            */
 /*  Date     : maandag 8 juni 2020                                                */
@@ -100,6 +100,7 @@ The weight of this menu item for sorting.
 CREATE TABLE ABC_MENU_ITEM_PAGE (
   mip_id SMALLINT UNSIGNED AUTO_INCREMENT NOT NULL,
   mni_id SMALLINT UNSIGNED NOT NULL,
+  mnu_id SMALLINT UNSIGNED NOT NULL,
   pag_id SMALLINT UNSIGNED NOT NULL,
   CONSTRAINT PK_ABC_MENU_ITEM_PAGE PRIMARY KEY (mip_id)
 );
@@ -115,9 +116,7 @@ The pages associated with a menu item.
 
 CREATE UNIQUE INDEX IX_ABC_MENU_CACHE1 ON ABC_MENU_CACHE (lan_id, mnu_id, pro_id);
 
-CREATE UNIQUE INDEX IX_ABC_MENU_ITEM_PAGE1 ON ABC_MENU_ITEM_PAGE (mni_id, pag_id);
-
-CREATE UNIQUE INDEX IX_ABC_MENU_ITEM_PAGE2 ON ABC_MENU_ITEM_PAGE (pag_id, mni_id);
+CREATE UNIQUE INDEX IX_ABC_MENU_ITEM_PAGE1 ON ABC_MENU_ITEM_PAGE (mnu_id, pag_id, mni_id);
 
 /*================================================================================*/
 /* CREATE FOREIGN KEYS                                                            */
@@ -163,3 +162,7 @@ ALTER TABLE ABC_MENU_ITEM_PAGE
 ALTER TABLE ABC_MENU_ITEM_PAGE
   ADD CONSTRAINT FK_ABC_MENU_ITEM_PAGE_AUT_PAGE
   FOREIGN KEY (pag_id) REFERENCES AUT_PAGE (pag_id);
+
+ALTER TABLE ABC_MENU_ITEM_PAGE
+  ADD CONSTRAINT FK_ABC_MENU_ITEM_PAGE_ABC_MENU
+  FOREIGN KEY (mnu_id) REFERENCES ABC_MENU (mnu_id);
