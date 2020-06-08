@@ -229,17 +229,11 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
   {
     foreach ($items as $i => $item)
     {
-      if ($item['pag_id']!==null && $this->nub->authority->hasAccessToPage($item['pag_id']))
-      {
-        unset($items[$i]);
-      }
+      $unset = ($item['pag_id']!==null && !$this->nub->authority->hasAccessToPage($item['pag_id']));
+      $unset = $unset || ($item['mni_hide_anonymous']===1 && $this->nub->session->isAnonymous());
+      $unset = $unset || ($item['mni_hide_identified']===1 && !$this->nub->session->isAnonymous());
 
-      if ($item['mni_hide_anonymous']===1 && $this->nub->session->isAnonymous())
-      {
-        unset($items[$i]);
-      }
-
-      if ($item['mni_hide_identified']===1 && !$this->nub->session->isAnonymous())
+      if ($unset)
       {
         unset($items[$i]);
       }
