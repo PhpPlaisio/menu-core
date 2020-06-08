@@ -115,7 +115,8 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
           $url = '/'.$item['pag_alias'];
         }
 
-        $html .= Html::generateTag('li', ['class' => $classes]);
+        $id   = 'mni-'.$this->nub->obfuscator::encode($item['mni_id'], 'mni');
+        $html .= Html::generateTag('li', ['id' => $id, 'class' => $classes]);
         $html .= Html::generateElement('a', ['href' => $url], $item['mni_text']);
       }
 

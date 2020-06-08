@@ -12,6 +12,22 @@ class CoreMenu extends PlaisioObject implements Menu
 {
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * Returns the ID of the HTML element of the menu item associated with a page.
+   *
+   * @param int $mnuId The ID of the menu.
+   * @param int $pagId The ID of the page.
+   *
+   * @return string|null
+   */
+  public function itemId(int $mnuId, int $pagId): ?string
+  {
+    $mniId = $this->nub->DL->abcMenuCoreLinkGetItemByPage($mnuId, $pagId);
+
+    return ($mniId===null) ? null : 'mni-'.$this->nub->obfuscator::encode($mniId, 'mni');
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * @inheritDoc
    */
   public function menu(int $mnuId): string
