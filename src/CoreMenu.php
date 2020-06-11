@@ -30,7 +30,7 @@ class CoreMenu extends PlaisioObject implements Menu
   /**
    * @inheritDoc
    */
-  public function menu(int $mnuId): string
+  public function menu(int $mnuId, ?string $name = null): string
   {
     $row = $this->nub->DL->abcMenuCoreCacheGet($this->nub->company->cmpId,
                                                $mnuId,
@@ -39,7 +39,7 @@ class CoreMenu extends PlaisioObject implements Menu
 
     if ($row===null)
     {
-      $html = $this->generateMenu($mnuId);
+      $html = $this->generateMenu($mnuId, $name);
     }
     else
     {
@@ -55,17 +55,18 @@ class CoreMenu extends PlaisioObject implements Menu
   /**
    * Generates the HTML code of a menu.
    *
-   * @param int $mnuId The ID of the menu.
+   * @param int         $mnuId The ID of the menu.
+   * @param string|null $name  The name of the menu. If null the default menu name will be used.
    *
    * @return string
    */
-  private function generateMenu(int $mnuId): string
+  private function generateMenu(int $mnuId, ?string $name): string
   {
     $menu  = $this->nub->DL->abcMenuCoreMenuGetDetails($mnuId);
     $class = $menu['mnu_class'];
     /** @var MenuGenerator $generator */
     $generator = new $class($this);
-    $html      = $generator->menu($mnuId);
+    $html      = $generator->menu($mnuId, $name);
 
     $this->nub->DL->abcMenuCoreCachePut($this->nub->company->cmpId,
                                         $mnuId,

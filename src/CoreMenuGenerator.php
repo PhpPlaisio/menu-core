@@ -20,7 +20,6 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
   private $menu;
 
   //--------------------------------------------------------------------------------------------------------------------
-
   /**
    * Object constructor.
    *
@@ -52,9 +51,9 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
   /**
    * @inheritDoc
    */
-  public function menu(int $mnuId): string
+  public function menu(int $mnuId, ?string $name): string
   {
-    $this->menu = $this->getMenuDetails($mnuId);
+    $this->menu = $this->getMenuDetails($mnuId, $name);
     $items      = $this->getMenuItems($mnuId);
 
     $items = $this->removeUnauthorizedItems($items);
@@ -85,7 +84,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * helps to generate the HTML code of the menu.
+   * Helps to generate the HTML code of the menu.
    *
    * @param array $items The sub-tree menu of items.
    * @param int   $level The current level of the sub-tree.
@@ -136,14 +135,15 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
   /**
    * Returns the details of a menu.
    *
-   * @param int $mnuId The ID of the menu.
+   * @param int         $mnuId The ID of the menu.
+   * @param string|null $name  The name of the menu. If null the default menu name will be used.
    *
    * @return array
    */
-  protected function getMenuDetails(int $mnuId): array
+  protected function getMenuDetails(int $mnuId, ?string $name): array
   {
     $menu             = $this->nub->DL->abcMenuCoreMenuGetDetails($mnuId);
-    $menu['mnu_name'] = self::normalizeMenuName($menu['mnu_name']);
+    $menu['mnu_name'] = self::normalizeMenuName($name ?? $menu['mnu_name']);
 
     return $menu;
   }
