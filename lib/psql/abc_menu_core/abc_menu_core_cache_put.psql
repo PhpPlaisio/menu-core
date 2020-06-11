@@ -20,8 +20,8 @@ begin
   ,                          lan_id
   ,                          pro_id
   ,                          mnc_html)
-  values( p_cmp_id
-  ,       p_mnu_id
+  values( p_mnu_id
+  ,       p_cmp_id
   ,       p_lan_id
   ,       p_pro_id
   ,       p_mnc_html )
