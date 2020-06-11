@@ -23,7 +23,7 @@ begin
   ,      pag.pag_id
   ,      pag.pag_alias
   from      ABC_MENU_ITEM       mni
-  join      ABC_BABEL_WORD_TEXT wdt  on  wdt.wrd_id = mni.wrd_id and
+  left join ABC_BABEL_WORD_TEXT wdt  on  wdt.wrd_id = mni.wrd_id and
                                          wdt.lan_id = p_lan_id
   left join AUT_PAGE            pag  on  pag.pag_id = mni.pag_id
   where  mni.mnu_id = p_mnu_id
