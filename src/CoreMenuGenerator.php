@@ -20,6 +20,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
   private $menu;
 
   //--------------------------------------------------------------------------------------------------------------------
+
   /**
    * Object constructor.
    *
@@ -98,10 +99,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
 
     foreach ($items as $key => $item)
     {
-      $classes = $this->classes(empty($item['children']),
-        $level,
-        ($key===array_key_first($items)),
-        ($key===array_key_last($items)));
+      $classes = $this->classes(empty($item['children']), $level);
 
       if ($item['mni_text']!==null)
       {
@@ -248,15 +246,10 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
    *
    * @param bool     $isLeave Must be tree if and only if the menu item is a leave.
    * @param int|null $level   The level of the menu item in the tree.
-   * @param bool     $isFirst Must true if and only if a leave is the first menu item.
-   * @param bool     $isLast  Must true if and only if a leave is the last menu item.
    *
    * @return array
    */
-  private function classes(bool $isLeave = false,
-                           ?int $level = null,
-                           bool $isFirst = false,
-                           bool $isLast = false): array
+  private function classes(bool $isLeave = false, ?int $level = null): array
   {
     $classes = ['menu-'.$this->menu['mnu_name']];
 
@@ -268,16 +261,6 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
     if ($isLeave)
     {
       $classes[] = 'menu-leave';
-    }
-
-    if ($isFirst)
-    {
-      $classes[] = 'menu-first';
-    }
-
-    if ($isLast)
-    {
-      $classes[] = 'menu-last';
     }
 
     return $classes;
