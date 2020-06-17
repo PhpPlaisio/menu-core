@@ -17,7 +17,7 @@
     "plaisio/menu": "^1.0.0",
     "plaisio/profile": "dev-master",
     "plaisio/session": "^3.0",
-    "plaisio/web-assets": "^1.2"
+    "plaisio/web-assets": "^2.0"
   },
   "require-dev": {
     "ext-mysqli": "*",
@@ -28,7 +28,7 @@
     "plaisio/cgi-core": "^1.4",
     "plaisio/company-resolver-uni": "^2.0",
     "plaisio/console": "^2.2",
-    "plaisio/core": "^0.11.17",
+    "plaisio/core": "^0.12.2",
     "plaisio/db-company": "^1.1",
     "plaisio/db-profile": "^1.1",
     "plaisio/language-resolver-core": "^1.3",

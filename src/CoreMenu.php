@@ -91,7 +91,7 @@ class CoreMenu extends PlaisioObject implements Menu
     if ($mniId!==null)
     {
       $id = 'mni-'.$this->nub->obfuscator::encode($mniId, 'mni');
-      $this->nub->assets->jsAdmClassSpecificFunctionCall(__CLASS__, 'markActiveMenuItem', [$id]);
+      $this->nub->assets->jsAdmFunctionCall(__CLASS__, 'markActiveMenuItem', [$id]);
     }
   }
 
