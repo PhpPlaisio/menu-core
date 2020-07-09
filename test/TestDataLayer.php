@@ -34,26 +34,6 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Selects the menu for a user.
-   *
-   * @param int|null $pCmpId The ID of the company (safeguard).
-   *                         smallint(5) unsigned
-   * @param int|null $pProId The ID of the profile of the user.
-   *                         smallint(5) unsigned
-   * @param int|null $pLanId The ID of the language for linguistic entities.
-   *                         tinyint(3) unsigned
-   *
-   * @return array[]
-   *
-   * @throws MySqlQueryErrorException;
-   */
-  public function abcAuthGetMenu(?int $pCmpId, ?int $pProId, ?int $pLanId): array
-  {
-    return $this->executeRows('call abc_auth_get_menu('.$this->quoteInt($pCmpId).','.$this->quoteInt($pProId).','.$this->quoteInt($pLanId).')');
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
    * Selects non-zero if a user has the proper authorization for page. Otherwise, selects 0.
    *
    * @param int|null $pCmpId The ID of the company of the user (safe guard).
@@ -100,7 +80,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Selects the page tabs (or sub-menu) for a user.
+   * Selects the page tabs for a user.
    *
    * @param int|null $pCmpId The ID of the company of the user (safe guard).
    *                         smallint(5) unsigned
@@ -1696,95 +1676,6 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Selects all menu item entries.
-   *
-   * @param int|null $pLanId The ID of the language for linguistic entities.
-   *                         tinyint(3) unsigned
-   *
-   * @return array[]
-   *
-   * @throws MySqlQueryErrorException;
-   */
-  public function abcSystemMenuGetAllEntries(?int $pLanId): array
-  {
-    return $this->executeRows('call abc_system_menu_get_all_entries('.$this->quoteInt($pLanId).')');
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Selects the details of a menu entry.
-   *
-   * @param int|null $pMnuId The ID of the menu item.
-   *                         smallint(5) unsigned
-   * @param int|null $pLanId The ID of the language for linguistic entities.
-   *                         tinyint(3) unsigned
-   *
-   * @return array
-   *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
-   */
-  public function abcSystemMenuGetDetails(?int $pMnuId, ?int $pLanId): array
-  {
-    return $this->executeRow1('call abc_system_menu_get_details('.$this->quoteInt($pMnuId).','.$this->quoteInt($pLanId).')');
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Inserts a new menu entry.
-   *
-   * @param int|null    $pWrdId     The ID of the word for the menu item title.
-   *                                smallint(5) unsigned
-   * @param int|null    $pPagId     The ID of the page where te menu item links to.
-   *                                smallint(5) unsigned
-   * @param int|null    $pMnuLevel  The level of the menu item.
-   *                                smallint(5) unsigned
-   * @param int|null    $pMnuGroup  The group to which the menu item belongs.
-   *                                smallint(5) unsigned
-   * @param int|null    $pMnuWeight The weight of the menu item inside its group.
-   *                                smallint(5) unsigned
-   * @param string|null $pMnuLink   Additional query string for the hyper link of the menu item.
-   *                                varchar(64) character set latin1 collation latin1_swedish_ci
-   *
-   * @return int
-   *
-   * @throws MySqlQueryErrorException;
-   */
-  public function abcSystemMenuInsert(?int $pWrdId, ?int $pPagId, ?int $pMnuLevel, ?int $pMnuGroup, ?int $pMnuWeight, ?string $pMnuLink): int
-  {
-    return $this->executeNone('call abc_system_menu_insert('.$this->quoteInt($pWrdId).','.$this->quoteInt($pPagId).','.$this->quoteInt($pMnuLevel).','.$this->quoteInt($pMnuGroup).','.$this->quoteInt($pMnuWeight).','.$this->quoteString($pMnuLink).')');
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Updates a menu entry.
-   *
-   * @param int|null    $pMnuId     The ID of menu item entry.
-   *                                smallint(5) unsigned
-   * @param int|null    $pWrdId     The ID of the word for the menu item title.
-   *                                smallint(5) unsigned
-   * @param int|null    $pPagId     The ID of the page where te menu item links to.
-   *                                smallint(5) unsigned
-   * @param int|null    $pMnuLevel  The level of the menu item.
-   *                                smallint(5) unsigned
-   * @param int|null    $pMnuGroup  The group to which the menu item belongs.
-   *                                smallint(5) unsigned
-   * @param int|null    $pMnuWeight The weight of the menu item inside its group.
-   *                                smallint(5) unsigned
-   * @param string|null $pMnuLink   Additional query string for the hyper link of the menu item.
-   *                                varchar(64) character set latin1 collation latin1_swedish_ci
-   *
-   * @return int
-   *
-   * @throws MySqlQueryErrorException;
-   */
-  public function abcSystemMenuUpdate(?int $pMnuId, ?int $pWrdId, ?int $pPagId, ?int $pMnuLevel, ?int $pMnuGroup, ?int $pMnuWeight, ?string $pMnuLink): int
-  {
-    return $this->executeNone('call abc_system_menu_update('.$this->quoteInt($pMnuId).','.$this->quoteInt($pWrdId).','.$this->quoteInt($pPagId).','.$this->quoteInt($pMnuLevel).','.$this->quoteInt($pMnuGroup).','.$this->quoteInt($pMnuWeight).','.$this->quoteString($pMnuLink).')');
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
    * Selects all modules.
    *
    * @param int|null $pLanId The ID of the language used for names.
@@ -2016,8 +1907,6 @@ class TestDataLayer extends MySqlDataLayer
    *                                tinyint(3) unsigned
    * @param int|null    $pPagIdOrg  The ID of master page of the new page (optional).
    *                                smallint(5) unsigned
-   * @param int|null    $pMnuId     The ID menu associated with the new page.
-   *                                smallint(5) unsigned
    * @param string|null $pPagAlias  The alias of the new page.
    *                                varchar(32) character set latin1 collation latin1_swedish_ci
    * @param string|null $pPagClass  The class of the new page.
@@ -2032,9 +1921,9 @@ class TestDataLayer extends MySqlDataLayer
    * @throws MySqlDataLayerException;
    * @throws ResultException;
    */
-  public function abcSystemPageInsertDetails(?int $pWrdId, ?int $pPtbId, ?int $pPagIdOrg, ?int $pMnuId, ?string $pPagAlias, ?string $pPagClass, ?string $pPagLabel, ?int $pPagWeight): int
+  public function abcSystemPageInsertDetails(?int $pWrdId, ?int $pPtbId, ?int $pPagIdOrg, ?string $pPagAlias, ?string $pPagClass, ?string $pPagLabel, ?int $pPagWeight): int
   {
-    return $this->executeSingleton1('call abc_system_page_insert_details('.$this->quoteInt($pWrdId).','.$this->quoteInt($pPtbId).','.$this->quoteInt($pPagIdOrg).','.$this->quoteInt($pMnuId).','.$this->quoteString($pPagAlias).','.$this->quoteString($pPagClass).','.$this->quoteString($pPagLabel).','.$this->quoteInt($pPagWeight).')');
+    return $this->executeSingleton1('call abc_system_page_insert_details('.$this->quoteInt($pWrdId).','.$this->quoteInt($pPtbId).','.$this->quoteInt($pPagIdOrg).','.$this->quoteString($pPagAlias).','.$this->quoteString($pPagClass).','.$this->quoteString($pPagLabel).','.$this->quoteInt($pPagWeight).')');
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -2049,8 +1938,6 @@ class TestDataLayer extends MySqlDataLayer
    *                                tinyint(3) unsigned
    * @param int|null    $pPagIdOrg  The ID of master page of the page (optional).
    *                                smallint(5) unsigned
-   * @param int|null    $pMnuId     The ID menu associated with the page.
-   *                                smallint(5) unsigned
    * @param string|null $pPagAlias  The alias of the page.
    *                                varchar(32) character set latin1 collation latin1_swedish_ci
    * @param string|null $pPagClass  The class of the page.
@@ -2064,9 +1951,9 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @throws MySqlQueryErrorException;
    */
-  public function abcSystemPageUpdateDetails(?int $pPagId, ?int $pWrdId, ?int $pPtbId, ?int $pPagIdOrg, ?int $pMnuId, ?string $pPagAlias, ?string $pPagClass, ?string $pPagLabel, ?int $pPagWeight): int
+  public function abcSystemPageUpdateDetails(?int $pPagId, ?int $pWrdId, ?int $pPtbId, ?int $pPagIdOrg, ?string $pPagAlias, ?string $pPagClass, ?string $pPagLabel, ?int $pPagWeight): int
   {
-    return $this->executeNone('call abc_system_page_update_details('.$this->quoteInt($pPagId).','.$this->quoteInt($pWrdId).','.$this->quoteInt($pPtbId).','.$this->quoteInt($pPagIdOrg).','.$this->quoteInt($pMnuId).','.$this->quoteString($pPagAlias).','.$this->quoteString($pPagClass).','.$this->quoteString($pPagLabel).','.$this->quoteInt($pPagWeight).')');
+    return $this->executeNone('call abc_system_page_update_details('.$this->quoteInt($pPagId).','.$this->quoteInt($pWrdId).','.$this->quoteInt($pPtbId).','.$this->quoteInt($pPagIdOrg).','.$this->quoteString($pPagAlias).','.$this->quoteString($pPagClass).','.$this->quoteString($pPagLabel).','.$this->quoteInt($pPagWeight).')');
   }
 
   //--------------------------------------------------------------------------------------------------------------------
