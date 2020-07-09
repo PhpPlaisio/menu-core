@@ -3,6 +3,7 @@
 /bin/
 /composer.lock
 /lib/psql/babel-core
+/package-lock.json
 /test/coverage.xml
 /test/etc/columns.txt
 /test/etc/routines.json
