@@ -1,5 +1,8 @@
 build:
   environment:
+    php:
+      pecl_extensions:
+        - inotify
     mysql: 5.7
 
   tests:
