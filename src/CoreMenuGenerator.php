@@ -99,7 +99,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
 
     foreach ($items as $key => $item)
     {
-      $classes = $this->classes(empty($item['children']), $level);
+      $classes = $this->classes(empty($item['children']), $level, $item['mni_class']);
 
       if ($item['mni_text']!==null)
       {
@@ -244,12 +244,13 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
   /**
    * Returns the classes for a ul, li, and nav element.
    *
-   * @param bool     $isLeave Must be tree if and only if the menu item is a leave.
-   * @param int|null $level   The level of the menu item in the tree.
+   * @param bool        $isLeave  Must be true if and only if the menu item is a leave.
+   * @param int|null    $level    The level of the menu item in the tree.
+   * @param string|null $mniClass The class of the menu ite,
    *
    * @return array
    */
-  private function classes(bool $isLeave = false, ?int $level = null): array
+  private function classes(bool $isLeave = false, ?int $level = null, ?string $mniClass = null): array
   {
     $classes = ['menu-'.$this->menu['mnu_name']];
 
@@ -261,6 +262,11 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
     if ($isLeave)
     {
       $classes[] = 'menu-leave';
+    }
+
+    if ($mniClass!==null)
+    {
+      $classes[] = $mniClass;
     }
 
     return $classes;
