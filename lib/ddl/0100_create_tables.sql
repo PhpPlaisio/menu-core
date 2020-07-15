@@ -5,7 +5,7 @@
 /*  FileName : menu-core.ecm                                                      */
 /*  Platform : MySQL 5                                                            */
 /*  Version  : Concept                                                            */
-/*  Date     : maandag 8 juni 2020                                                */
+/*  Date     : woensdag 15 juli 2020                                              */
 /*================================================================================*/
 /*================================================================================*/
 /* CREATE TABLES                                                                  */
@@ -20,8 +20,13 @@ CREATE TABLE ABC_MENU (
 );
 
 /*
+COMMENT ON COLUMN ABC_MENU.mnu_name
+The name of this menu.
+*/
+
+/*
 COMMENT ON COLUMN ABC_MENU.mnu_class
-The PHP class for generating the HMTL code of the menu.
+The PHP class for generating the HMTL code of this menu.
 */
 
 CREATE TABLE ABC_MENU_CACHE (
@@ -65,6 +70,7 @@ CREATE TABLE ABC_MENU_ITEM (
   mnu_id SMALLINT UNSIGNED NOT NULL,
   pag_id SMALLINT UNSIGNED,
   wrd_id SMALLINT UNSIGNED,
+  mni_class VARCHAR(80),
   mni_hide_anonymous TINYINT DEFAULT 0 NOT NULL,
   mni_hide_identified TINYINT DEFAULT 0 NOT NULL,
   mni_depth SMALLINT NOT NULL,
@@ -78,8 +84,13 @@ The text of this menu item.
 */
 
 /*
+COMMENT ON COLUMN ABC_MENU_ITEM.mni_class
+The CSS class for this menu item.
+*/
+
+/*
 COMMENT ON COLUMN ABC_MENU_ITEM.mni_hide_anonymous
-Hide this menu item for anymouse user.
+Hide this menu item for anonymous user.
 */
 
 /*
