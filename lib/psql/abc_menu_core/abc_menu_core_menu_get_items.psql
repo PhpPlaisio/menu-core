@@ -13,7 +13,10 @@ begin
   ,      mni.mni_id_parent
   ,      mni.mnu_id
   ,      mni.wrd_id
-  ,      mni.mni_class
+  ,      mni.mni_class1
+  ,      mni.mni_class2
+  ,      mni.mni_class3
+  ,      mni.mni_class4
   ,      mni.mni_hide_anonymous
   ,      mni.mni_hide_identified
   ,      mni.mni_depth

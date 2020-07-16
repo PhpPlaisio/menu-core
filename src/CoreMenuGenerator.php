@@ -99,7 +99,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
 
     foreach ($items as $key => $item)
     {
-      $classes = $this->classes(empty($item['children']), $level, $item['mni_class']);
+      $classes = $this->classes(empty($item['children']), $level);
 
       if ($item['mni_text']!==null)
       {
@@ -113,8 +113,10 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
         }
 
         $id   = 'mni-'.$this->nub->obfuscator::encode($item['mni_id'], 'mni');
-        $html .= Html::generateTag('li', ['id' => $id, 'class' => $classes]);
-        $html .= Html::generateElement('a', ['href' => $url], $item['mni_text']);
+        $span1 = Html::generateElement('span', ['class' => $item['mni_class3']]);
+        $span2 = Html::generateElement('span', ['class' => $item['mni_class4']], $item['mni_text']);
+        $html .= Html::generateTag('li', ['id' => $id, 'class' => array_merge($classes, [$item['mni_class1']])]);
+        $html .= Html::generateElement('a', ['href' => $url, 'class' => $item['mni_class2']], $span1.$span2, true);
       }
 
       if (!empty($item['children']))
@@ -246,11 +248,10 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
    *
    * @param bool        $isLeave  Must be true if and only if the menu item is a leave.
    * @param int|null    $level    The level of the menu item in the tree.
-   * @param string|null $mniClass The class of the menu ite,
    *
    * @return array
    */
-  private function classes(bool $isLeave = false, ?int $level = null, ?string $mniClass = null): array
+  private function classes(bool $isLeave = false, ?int $level = null): array
   {
     $classes = ['menu-'.$this->menu['mnu_name']];
 
@@ -262,11 +263,6 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
     if ($isLeave)
     {
       $classes[] = 'menu-leave';
-    }
-
-    if ($mniClass!==null)
-    {
-      $classes[] = $mniClass;
     }
 
     return $classes;

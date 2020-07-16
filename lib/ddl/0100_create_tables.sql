@@ -5,7 +5,7 @@
 /*  FileName : menu-core.ecm                                                      */
 /*  Platform : MySQL 5                                                            */
 /*  Version  : Concept                                                            */
-/*  Date     : woensdag 15 juli 2020                                              */
+/*  Date     : donderdag 16 juli 2020                                             */
 /*================================================================================*/
 /*================================================================================*/
 /* CREATE TABLES                                                                  */
@@ -70,7 +70,10 @@ CREATE TABLE ABC_MENU_ITEM (
   mnu_id SMALLINT UNSIGNED NOT NULL,
   pag_id SMALLINT UNSIGNED,
   wrd_id SMALLINT UNSIGNED,
-  mni_class VARCHAR(80),
+  mni_class1 VARCHAR(80),
+  mni_class2 VARCHAR(80),
+  mni_class3 VARCHAR(80),
+  mni_class4 VARCHAR(80),
   mni_hide_anonymous TINYINT DEFAULT 0 NOT NULL,
   mni_hide_identified TINYINT DEFAULT 0 NOT NULL,
   mni_depth SMALLINT NOT NULL,
@@ -84,8 +87,23 @@ The text of this menu item.
 */
 
 /*
-COMMENT ON COLUMN ABC_MENU_ITEM.mni_class
-The CSS class for this menu item.
+COMMENT ON COLUMN ABC_MENU_ITEM.mni_class1
+The CSS class for li element
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM.mni_class2
+The CSS class for a element
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM.mni_class3
+The CSS class for first span element.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM.mni_class4
+The CSS class for second span element
 */
 
 /*
