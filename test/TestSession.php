@@ -61,9 +61,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns stateful double submit token to prevent CSRF attacks.
-   *
-   * @return string
+   * @inheritDoc
    */
   public function getCsrfToken(): string
   {
@@ -72,9 +70,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns the ID of preferred language of the user of the current session.
-   *
-   * @return int
+   * @inheritDoc
    */
   public function getLanId(): int
   {
@@ -83,19 +79,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns a reference to the data of a named section of the session.
-   *
-   * If the named section does not yet exists a reference to null is returned. Only named sections opened in shared
-   * and exclusive mode will be saved by @param string $name The name of the named section.
-   *
-   * @param int $mode The mode for getting the named section.
-   *
-   * @return mixed
-   *
-   * @see   save.
-   *
-   * @since 1.0.0
-   * @api
+   * @inheritDoc
    */
   public function &getNamedSection(string $name, int $mode)
   {
@@ -104,9 +88,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns the session token.
-   *
-   * @return string
+   * @inheritDoc
    */
   public function getSessionToken(): string
   {
@@ -115,9 +97,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns true if the user is anonymous (i.e. not a user who has logged in). Otherwise, returns false.
-   *
-   * @return bool
+   * @inheritDoc
    */
   public function isAnonymous(): bool
   {
@@ -126,11 +106,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Updates the session that an user has successfully logged in.
-   *
-   * @param int $usrId The ID the user.
-   *
-   * @return void
+   * @inheritDoc
    */
   public function login(int $usrId): void
   {
@@ -139,9 +115,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Terminates the current session.
-   *
-   * @return void
+   * @inheritDoc
    */
   public function logout(): void
   {
@@ -150,9 +124,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Saves the current state op the session.
-   *
-   * @return void
+   * @inheritDoc
    */
   public function save(): void
   {
@@ -161,9 +133,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Changes the language of the current session.
-   *
-   * @param int $lanId The ID of the new language.
+   * @inheritDoc
    */
   public function setLanId(int $lanId): void
   {
@@ -172,11 +142,27 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Creates a session or resumes the current session based on the session cookie.
-   *
-   * @return void
+   * @inheritDoc
    */
   public function start(): void
+  {
+    throw new \LogicException('Not implemented');
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * @inheritDoc
+   */
+  public function getHasFlashMessage(): bool
+  {
+    throw new \LogicException('Not implemented');
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * @inheritDoc
+   */
+  public function setHasFlashMessage(bool $hasFlashMessage): void
   {
     throw new \LogicException('Not implemented');
   }
