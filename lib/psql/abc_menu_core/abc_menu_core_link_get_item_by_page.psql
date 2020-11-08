@@ -3,12 +3,14 @@
  *
  * @param p_mnu_id The ID of the menu.
  * @param p_pag_id The ID of the page.
+ *
+ * @type singleton0
+ *
+ * @return int|null
  */
 create procedure abc_menu_core_link_get_item_by_page(in p_mnu_id @abc_menu_item.mnu_id%type@,
                                                      in p_pag_id @abc_menu_item.pag_id%type@)
 reads sql data
--- type:   singleton0
--- return: int|null
 begin
   select mni_id
   from ABC_MENU_ITEM_PAGE

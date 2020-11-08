@@ -3,11 +3,12 @@
  *
  * @param p_mnu_id The ID of the menu.
  * @param p_lan_id The ID of the language for linguistic entities.
+ *
+ * @type rows
  */
 create procedure abc_menu_core_menu_get_items(in p_mnu_id @abc_menu_cache.mnu_id%type@,
                                               in p_lan_id @abc_babel_word_text.lan_id%type@)
 reads sql data
--- type: rows
 begin
   select mni.mni_id
   ,      mni.mni_id_parent
