@@ -24,8 +24,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return string|null
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcAuthGetConfigValue(?int $pCmpId, ?int $pCfgId): ?string
   {
@@ -45,8 +45,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return bool
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcAuthGetPageAuth(?int $pCmpId, ?int $pProId, ?int $pPagId): bool
   {
@@ -70,8 +70,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array|null
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcAuthGetPageInfo(?int $pCmpId, ?int $pPagId, ?int $pProId, ?int $pLanId, ?string $pPagAlias): ?array
   {
@@ -93,7 +93,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcAuthGetPageTabs(?int $pCmpId, ?int $pPtbId, ?int $pProId, ?int $pLanId): array
   {
@@ -119,8 +119,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return bool
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcAuthorityCoreUserHasAccessToPage(?int $pCmpId, ?int $pUsrId, ?int $pPagId): bool
   {
@@ -133,7 +133,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelCoreInternalCodeMap(): array
   {
@@ -155,8 +155,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcBabelCoreLanguageGetDetails(?int $pLanId): array
   {
@@ -174,8 +174,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return string
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcBabelCoreTextGetText(?int $pTxtId, ?int $pLanId): string
   {
@@ -193,8 +193,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return string
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcBabelCoreWordGetWord(?int $pWrdId, ?int $pLanId): string
   {
@@ -210,7 +210,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelLanguageGetAllLanguages(?int $pLanId): array
   {
@@ -228,8 +228,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return string|null
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcBabelLanguageGetName(?int $pLanIdAct, ?int $pLanId): ?string
   {
@@ -245,7 +245,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelTextDeleteText(?int $pTxtId): int
   {
@@ -263,8 +263,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcBabelTextGetDetails(?int $pTxtId, ?int $pLanId): array
   {
@@ -280,7 +280,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelTextGroupGetAll(?int $pLanId): array
   {
@@ -298,7 +298,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelTextGroupGetAllTexts(?int $pTtgId, ?int $pLanId): array
   {
@@ -316,7 +316,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelTextGroupGetAllTextsTranslator(?int $pTtgId, ?int $pLanIdAct): array
   {
@@ -332,8 +332,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcBabelTextGroupGetDetails(?int $pTtgId): array
   {
@@ -351,8 +351,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcBabelTextGroupInsertDetails(?string $pTtgName, ?string $pTtgLabel): int
   {
@@ -372,7 +372,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelTextGroupUpdateDetails(?int $pTtgId, ?string $pTtgName, ?string $pTtgLabel): int
   {
@@ -394,9 +394,9 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcBabelTextInsertText(?int $pTtgId, ?string $pTxtLabel, ?string $pTxtComment, ?string $pTttText)
   {
@@ -465,9 +465,9 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcBabelTextTranslateText(?int $pTxtId, ?int $pLanId, ?string $pTttText)
   {
@@ -524,9 +524,9 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcBabelTextUpdateDetails(?int $pTxtId, ?int $pTtgId, ?string $pTxtLabel, ?string $pTxtComment, ?string $pTttText)
   {
@@ -576,7 +576,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelWordDeleteWord(?int $pWrdId): int
   {
@@ -594,8 +594,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcBabelWordGetDetails(?int $pWrdId, ?int $pLanId): array
   {
@@ -611,7 +611,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelWordGroupGetAll(?int $pLanId): array
   {
@@ -629,7 +629,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelWordGroupGetAllWords(?int $pWgdId, ?int $pLanId): array
   {
@@ -647,7 +647,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelWordGroupGetAllWordsTranslator(?int $pWgdId, ?int $pLanIdAct): array
   {
@@ -663,8 +663,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcBabelWordGroupGetDetails(?int $pWdgId): array
   {
@@ -682,8 +682,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcBabelWordGroupInsertDetails(?string $pWdgName, ?string $pWdgLabel): int
   {
@@ -703,7 +703,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelWordGroupUpdateDetails(?int $pWdgId, ?string $pWdgName, ?string $pWdgLabel): int
   {
@@ -725,8 +725,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcBabelWordInsertWord(?int $pWdgId, ?string $pWrdLabel, ?string $pWrdComment, ?string $pWdtText): int
   {
@@ -748,7 +748,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelWordTranslateWord(?int $pUsrId, ?int $pWrdId, ?int $pLanId, ?string $pWdtText): int
   {
@@ -772,7 +772,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcBabelWordUpdateDetails(?int $pWrdId, ?int $pWdgId, ?string $pWrdLabel, ?string $pWrdComment, ?string $pWdtText): int
   {
@@ -792,7 +792,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyConfigUpdateValue(?int $pCmpId, ?int $pCfgId, ?string $pCfgValue): int
   {
@@ -810,7 +810,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyFunctionalitiesGetAllEnabled(?int $pCmpId, ?int $pLanId): array
   {
@@ -823,7 +823,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyGetAll(): array
   {
@@ -839,8 +839,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int|null
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcCompanyGetCmpIdByCmpAbbr(?string $pCmpAbbr): ?int
   {
@@ -856,8 +856,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcCompanyGetDetails(?int $pCmpId): array
   {
@@ -875,8 +875,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcCompanyInsert(?string $pCmpAbbr, ?string $pCmpLabel): int
   {
@@ -894,7 +894,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyModuleDisable(?int $pCmpId, ?int $pMdlId): int
   {
@@ -912,7 +912,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyModuleEnable(?int $pCmpId, ?int $pMdlId): int
   {
@@ -930,7 +930,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyModuleGetAllAvailable(?int $pCmpId, ?int $pLanId): array
   {
@@ -948,7 +948,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyModuleGetAllEnabled(?int $pCmpId, ?int $pLanId): array
   {
@@ -968,7 +968,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyRoleDeleteFunctionality(?int $pCmpId, ?int $pRolId, ?int $pFunId): int
   {
@@ -986,7 +986,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyRoleGetAll(?int $pCmpId, ?int $pLanId): array
   {
@@ -1007,7 +1007,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyRoleGetAvailableFunctionalities(?int $pCmpId, ?int $pRolId, ?int $pLanId): array
   {
@@ -1027,8 +1027,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcCompanyRoleGetDetails(?int $pCmpId, ?int $pRolId, ?int $pLanId): array
   {
@@ -1048,7 +1048,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyRoleGetFunctionalities(?int $pCmpId, ?int $pRolId, ?int $pLanId): array
   {
@@ -1068,7 +1068,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyRoleGetPages(?int $pCmpId, ?int $pRolId, ?int $pLanId): array
   {
@@ -1086,7 +1086,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyRoleGroupGetAllRoles(?int $pCmpId, ?int $pRlgId): array
   {
@@ -1110,8 +1110,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcCompanyRoleInsert(?int $pCmpId, ?int $pRlgId, ?string $pRolName, ?int $pRolWeight, ?string $pRolLabel): int
   {
@@ -1131,7 +1131,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyRoleInsertFunctionality(?int $pCmpId, ?int $pRolId, ?int $pFunId): int
   {
@@ -1157,7 +1157,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyRoleUpdate(?int $pCmpId, ?int $pRolId, ?int $pRlgId, ?string $pRolName, ?int $pRolWeight, ?string $pRolLabel): int
   {
@@ -1175,7 +1175,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanySpecificPageDelete(?int $pCmpId, ?int $pPagId): int
   {
@@ -1193,7 +1193,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanySpecificPageGetAll(?int $pCmpId, ?int $pLanId): array
   {
@@ -1213,8 +1213,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcCompanySpecificPageGetDetails(?int $pCmpId, ?int $pPagId, ?int $pLanId): array
   {
@@ -1234,7 +1234,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanySpecificPageInsert(?int $pCmpId, ?int $pPagId, ?string $pPagClass): int
   {
@@ -1254,7 +1254,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanySpecificPageUpdate(?int $pCmpId, ?int $pPagId, ?string $pPagClass): int
   {
@@ -1274,7 +1274,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcCompanyUpdate(?int $pCmpId, ?string $pCmpAbbr, ?string $pCmpLabel): int
   {
@@ -1290,7 +1290,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcMenuCoreCacheFlush(?int $pCmpId): int
   {
@@ -1308,7 +1308,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcMenuCoreCacheFlushByProId(?int $pCmpId, ?int $pProId): int
   {
@@ -1330,8 +1330,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array|null
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcMenuCoreCacheGet(?int $pCmpId, ?int $pMnuId, ?int $pLanId, ?int $pProId): ?array
   {
@@ -1355,9 +1355,9 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcMenuCoreCachePut(?int $pCmpId, ?int $pMnuId, ?int $pLanId, ?int $pProId, ?string $pMncHtml)
   {
@@ -1408,8 +1408,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int|null
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcMenuCoreLinkGetItemByPage(?int $pMnuId, ?int $pPagId): ?int
   {
@@ -1425,8 +1425,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcMenuCoreMenuGetDetails(?int $pMnuId): array
   {
@@ -1444,7 +1444,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcMenuCoreMenuGetItems(?int $pMnuId, ?int $pLanId): array
   {
@@ -1457,7 +1457,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcProfileProper(): int
   {
@@ -1471,7 +1471,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcProfileProperClean(): int
   {
@@ -1489,7 +1489,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcProfileProperUser(?int $pCmpId, ?int $pUsrId): int
   {
@@ -1507,7 +1507,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemFunctionalityDeletePage(?int $pFunId, ?int $pPagId): int
   {
@@ -1523,7 +1523,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemFunctionalityGetAll(?int $pLanId): array
   {
@@ -1539,7 +1539,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemFunctionalityGetAvailablePages(?int $pFunId): array
   {
@@ -1557,7 +1557,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemFunctionalityGetAvailableRoles(?int $pFunId, ?int $pLanId): array
   {
@@ -1575,8 +1575,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcSystemFunctionalityGetDetails(?int $pFunId, ?int $pLanId): array
   {
@@ -1594,7 +1594,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemFunctionalityGetPages(?int $pFunId, ?int $pLanId): array
   {
@@ -1610,7 +1610,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemFunctionalityGetRoles(?int $pFunId): array
   {
@@ -1628,8 +1628,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcSystemFunctionalityInsertDetails(?int $pMdlId, ?int $pWrdId): int
   {
@@ -1647,7 +1647,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemFunctionalityInsertPage(?int $pFunId, ?int $pPagId): int
   {
@@ -1667,7 +1667,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemFunctionalityUpdateDetails(?int $pFunId, ?int $pMdlId, ?int $pWrdId): int
   {
@@ -1683,7 +1683,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemModuleGetAll(?int $pLanId): array
   {
@@ -1699,7 +1699,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemModuleGetAvailableCompanies(?int $pMdlId): array
   {
@@ -1717,8 +1717,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcSystemModuleGetDetails(?int $pMdlId, ?int $pLanId): array
   {
@@ -1736,7 +1736,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemModuleGetFunctions(?int $pMdlId, ?int $pLanId): array
   {
@@ -1752,7 +1752,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemModuleGetGrantedCompanies(?int $pMdlId): array
   {
@@ -1768,8 +1768,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcSystemModuleInsert(?int $pWrdId): int
   {
@@ -1787,7 +1787,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemModuleModify(?int $pMdlId, ?int $pWrdId): int
   {
@@ -1803,7 +1803,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemPageGetAll(?int $pLanId): array
   {
@@ -1819,7 +1819,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemPageGetAllMasters(?int $pLanId): array
   {
@@ -1837,7 +1837,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemPageGetAvailableFunctionalities(?int $pPagId, ?int $pLanId): array
   {
@@ -1855,8 +1855,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcSystemPageGetDetails(?int $pPagId, ?int $pLanId): array
   {
@@ -1874,7 +1874,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemPageGetGrantedFunctionalities(?int $pPagId, ?int $pLanId): array
   {
@@ -1890,7 +1890,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemPageGetGrantedRoles(?int $pPagId): array
   {
@@ -1918,8 +1918,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcSystemPageInsertDetails(?int $pWrdId, ?int $pPtbId, ?int $pPagIdOrg, ?string $pPagAlias, ?string $pPagClass, ?string $pPagLabel, ?int $pPagWeight): int
   {
@@ -1949,7 +1949,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemPageUpdateDetails(?int $pPagId, ?int $pWrdId, ?int $pPtbId, ?int $pPagIdOrg, ?string $pPagAlias, ?string $pPagClass, ?string $pPagLabel, ?int $pPagWeight): int
   {
@@ -1965,7 +1965,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemRoleGroupGetAll(?int $pLanId): array
   {
@@ -1983,8 +1983,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcSystemRoleGroupGetDetails(?int $pRlgId, ?int $pLanId): array
   {
@@ -2000,7 +2000,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemRoleGroupGetRoles(?int $pRlgId): array
   {
@@ -2020,8 +2020,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcSystemRoleGroupInsert(?int $pWrdId, ?int $pRlgWeight, ?string $pRlgLabel): int
   {
@@ -2042,7 +2042,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemRoleGroupUpdate(?int $pRlgId, ?int $pWrdId, ?int $pRlgWeight, ?string $pRlgLabel): int
   {
@@ -2058,7 +2058,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemTabGetAll(?int $pLanId): array
   {
@@ -2076,8 +2076,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcSystemTabGetDetails(?int $pPtbId, ?int $pLanId): array
   {
@@ -2095,7 +2095,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemTabGetMasterPages(?int $pPtbId, ?int $pLanId): array
   {
@@ -2113,8 +2113,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcSystemTabInsertDetails(?int $pWrdId, ?string $pPtbLabel): int
   {
@@ -2134,7 +2134,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcSystemTabUpdateDetails(?int $pPtbId, ?int $pWrdId, ?string $pPtbLabel): int
   {
@@ -2152,8 +2152,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return string
    *
-   * @throws MySqlDataLayerException;
-   * @throws ResultException;
+   * @throws MySqlDataLayerException
+   * @throws ResultException
    */
   public function abcUserPasswordGetHash(?int $pCmpId, ?int $pUsrId): string
   {
@@ -2173,7 +2173,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcUserPasswordUpdateHash(?int $pCmpId, ?int $pUsrId, ?string $pUsrPasswordHash): int
   {
@@ -2191,7 +2191,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array[]
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcUserRoleGetAll(?int $pCmpId, ?int $pUsrId): array
   {
@@ -2211,8 +2211,8 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return array|null
    *
-   * @throws MySqlQueryErrorException;
-   * @throws ResultException;
+   * @throws MySqlQueryErrorException
+   * @throws ResultException
    */
   public function abcUserRoleGetDetails(?int $pCmpId, ?int $pUsrId, ?int $pRolId): ?array
   {
@@ -2236,7 +2236,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcUserRoleGrantRole(?int $pCmpId, ?int $pUsrId, ?int $pRolId, ?string $pAurDateStart, ?string $pAurDateStop): int
   {
@@ -2256,7 +2256,7 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @return int
    *
-   * @throws MySqlQueryErrorException;
+   * @throws MySqlQueryErrorException
    */
   public function abcUserRoleRevokeRole(?int $pCmpId, ?int $pUsrId, ?int $pRolId): int
   {
