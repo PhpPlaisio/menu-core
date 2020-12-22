@@ -20,7 +20,6 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
   private $menu;
 
   //--------------------------------------------------------------------------------------------------------------------
-
   /**
    * Object constructor.
    *
@@ -111,11 +110,19 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
         {
           $url = '/'.$item['pag_alias'];
         }
+      }
+      else
+      {
+        $url = null;
+      }
 
-        $id   = 'mni-'.$this->nub->obfuscator::encode($item['mni_id'], 'mni');
-        $span1 = Html::generateElement('span', ['class' => $item['mni_class3']]);
-        $span2 = Html::generateElement('span', ['class' => $item['mni_class4']], $item['mni_text']);
-        $html .= Html::generateTag('li', ['id' => $id, 'class' => array_merge($classes, [$item['mni_class1']])]);
+      $id    = 'mni-'.$this->nub->obfuscator::encode($item['mni_id'], 'mni');
+      $span1 = Html::generateElement('span', ['class' => $item['mni_class3']]);
+      $span2 = Html::generateElement('span', ['class' => $item['mni_class4']], $item['mni_text']);
+      $html  .= Html::generateTag('li', ['id' => $id, 'class' => array_merge($classes, [$item['mni_class1']])]);
+
+      if ($url!==null)
+      {
         $html .= Html::generateElement('a', ['href' => $url, 'class' => $item['mni_class2']], $span1.$span2, true);
       }
 
@@ -123,6 +130,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
       {
         $html .= $this->generateHtmlHelper1($item['children'], $level + 1);
       }
+
       $html .= '</li>';
     }
 
