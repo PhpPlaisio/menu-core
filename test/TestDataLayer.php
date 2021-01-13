@@ -398,7 +398,7 @@ class TestDataLayer extends MySqlDataLayer
    * @throws MySqlQueryErrorException
    * @throws ResultException
    */
-  public function abcBabelTextInsertText(?int $pTtgId, ?string $pTxtLabel, ?string $pTxtComment, ?string $pTttText)
+  public function abcBabelTextInsertText(?int $pTtgId, ?string $pTxtLabel, ?string $pTxtComment, ?string $pTttText): int
   {
     $query = 'call abc_babel_text_insert_text('.$this->quoteInt($pTtgId).','.$this->quoteString($pTxtLabel).',?,?)';
     $stmt  = @$this->mysqli->prepare($query);
@@ -469,7 +469,7 @@ class TestDataLayer extends MySqlDataLayer
    * @throws MySqlQueryErrorException
    * @throws ResultException
    */
-  public function abcBabelTextTranslateText(?int $pTxtId, ?int $pLanId, ?string $pTttText)
+  public function abcBabelTextTranslateText(?int $pTxtId, ?int $pLanId, ?string $pTttText): int
   {
     $query = 'call abc_babel_text_translate_text('.$this->quoteInt($pTxtId).','.$this->quoteInt($pLanId).',?)';
     $stmt  = @$this->mysqli->prepare($query);
@@ -528,7 +528,7 @@ class TestDataLayer extends MySqlDataLayer
    * @throws MySqlQueryErrorException
    * @throws ResultException
    */
-  public function abcBabelTextUpdateDetails(?int $pTxtId, ?int $pTtgId, ?string $pTxtLabel, ?string $pTxtComment, ?string $pTttText)
+  public function abcBabelTextUpdateDetails(?int $pTxtId, ?int $pTtgId, ?string $pTxtLabel, ?string $pTxtComment, ?string $pTttText): int
   {
     $query = 'call abc_babel_text_update_details('.$this->quoteInt($pTxtId).','.$this->quoteInt($pTtgId).','.$this->quoteString($pTxtLabel).',?,?)';
     $stmt  = @$this->mysqli->prepare($query);
@@ -1359,7 +1359,7 @@ class TestDataLayer extends MySqlDataLayer
    * @throws MySqlQueryErrorException
    * @throws ResultException
    */
-  public function abcMenuCoreCachePut(?int $pCmpId, ?int $pMnuId, ?int $pLanId, ?int $pProId, ?string $pMncHtml)
+  public function abcMenuCoreCachePut(?int $pCmpId, ?int $pMnuId, ?int $pLanId, ?int $pProId, ?string $pMncHtml): int
   {
     $query = 'call abc_menu_core_cache_put('.$this->quoteInt($pCmpId).','.$this->quoteInt($pMnuId).','.$this->quoteInt($pLanId).','.$this->quoteInt($pProId).',?)';
     $stmt  = @$this->mysqli->prepare($query);
