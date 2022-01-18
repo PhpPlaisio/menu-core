@@ -17,7 +17,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
    *
    * @var array
    */
-  private $menu;
+  private array $menu;
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
@@ -60,83 +60,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
     $items = $this->organizeItems($items);
     $items = $this->removeEmptyFolders($items);
 
-    return $this->generateHtml($items);
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Generates the HTML code of the menu.
-   *
-   * @param array $items The tree menu items.
-   *
-   * @return string
-   */
-  protected function generateHtml(array $items): string
-  {
-    if (empty($items)) return '';
-
-    $html = Html::generateTag('nav', ['id' => 'menu-'.$this->menu['mnu_name'], 'class' => $this->classes()]);
-    $html .= $this->generateHtmlHelper1($items, 0);
-    $html .= '</nav>';
-
-    return $html;
-  }
-
-  //--------------------------------------------------------------------------------------------------------------------
-  /**
-   * Helps to generate the HTML code of the menu.
-   *
-   * @param array $items The sub-tree menu of items.
-   * @param int   $level The current level of the sub-tree.
-   *
-   * @return string
-   */
-  protected function generateHtmlHelper1(array $items, int $level): string
-  {
-    $classes = $this->classes(false, $level);
-    $html    = Html::generateTag('ul', ['class' => $classes]);
-
-    foreach ($items as $key => $item)
-    {
-      $classes = $this->classes(empty($item['children']), $level);
-
-      if ($item['mni_text']!==null)
-      {
-        if ($item['pag_alias']===null)
-        {
-          $url = $this->nub->cgi->putId('pag', $item['pag_id'], 'pag');
-        }
-        else
-        {
-          $url = '/'.$item['pag_alias'];
-        }
-      }
-      else
-      {
-        $url = null;
-      }
-
-      $id    = 'mni-'.$this->nub->obfuscator::encode($item['mni_id'], 'mni');
-      $span1 = Html::generateElement('span', ['class' => $item['mni_class3']]);
-      $span2 = Html::generateElement('span', ['class' => $item['mni_class4']], $item['mni_text']);
-      $html  .= Html::generateTag('li', ['id' => $id, 'class' => array_merge($classes, [$item['mni_class1']])]);
-
-      if ($url!==null)
-      {
-        $html .= Html::generateElement('a', ['href' => $url, 'class' => $item['mni_class2']], $span1.$span2, true);
-      }
-
-      if (!empty($item['children']))
-      {
-        $html .= $this->generateHtmlHelper1($item['children'], $level + 1);
-      }
-
-      $html .= '</li>';
-    }
-
-    $html .= '</ul>';
-
-    return $html;
+    return $this->htmlMenu($items);
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -167,6 +91,26 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
   protected function getMenuItems(int $mnuId): array
   {
     return $this->nub->DL->abcMenuCoreMenuGetItems($mnuId, $this->nub->babel->lanId);
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Generates the HTML code of the menu.
+   *
+   * @param array $items The tree menu items.
+   *
+   * @return string
+   */
+  protected function htmlMenu(array $items): string
+  {
+    if (empty($items)) return '';
+
+    $struct = ['tag'   => 'nav',
+               'attr'  => ['class' => $this->classes(),
+                           'id'    => 'menu-'.$this->menu['mnu_name']],
+               'inner' => $this->structMenuHelper($items, 0)];
+
+    return Html::htmlNested($struct);
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -204,7 +148,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Removes empty sub-tree from the menu items.
+   * Removes empty subtree from the menu items.
    *
    * @param array $items The flat row set with menu items.
    *
@@ -252,10 +196,71 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Returns the classes for a ul, li, and nav element.
+   * Helps to generate the HTML code of the menu.
    *
-   * @param bool        $isLeave  Must be true if and only if the menu item is a leave.
-   * @param int|null    $level    The level of the menu item in the tree.
+   * @param array $items The subtree menu of items.
+   * @param int   $level The current level of the subtree.
+   *
+   * @return array
+   */
+  protected function structMenuHelper(array $items, int $level): array
+  {
+    $list = [];
+    foreach ($items as $item)
+    {
+      if ($item['mni_text']!==null)
+      {
+        if ($item['pag_alias']===null)
+        {
+          $url = $this->nub->cgi->putId('pag', $item['pag_id'], 'pag');
+        }
+        else
+        {
+          $url = '/'.$item['pag_alias'];
+        }
+      }
+      else
+      {
+        $url = null;
+      }
+
+      $inner = [];
+      if ($url!==null)
+      {
+        $inner[] = ['tag'   => 'a',
+                    'attr'  => ['class' => $item['mni_class2'],
+                                'href'  => $url],
+                    'inner' => [['tag'  => 'span',
+                                 'attr' => ['class' => $item['mni_class3']],
+                                 'html' => null],
+                                ['tag'  => 'span',
+                                 'attr' => ['class' => $item['mni_class4']],
+                                 'text' => $item['mni_text']]]];
+      }
+
+      if (!empty($item['children']))
+      {
+        $inner[] = $this->structMenuHelper($item['children'], $level + 1);
+      }
+
+      $list[] = ['tag'   => 'li',
+                 'attr'  => ['class' => array_merge($this->classes(empty($item['children']), $level),
+                                                    [$item['mni_class1']]),
+                             'id'    => 'mni-'.$this->nub->obfuscator::encode($item['mni_id'], 'mni')],
+                 'inner' => $inner];
+    }
+
+    return ['tag'   => 'ul',
+            'attr'  => ['class' => $this->classes(false, $level)],
+            'inner' => $list];
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Returns the classes for an ul, li, and nav element.
+   *
+   * @param bool     $isLeave Must be true if and only if the menu item is a leave.
+   * @param int|null $level   The level of the menu item in the tree.
    *
    * @return array
    */
