@@ -221,7 +221,7 @@ class TestDataLayer extends MySqlDataLayer
   /**
    * Selects the name of a language.
    *
-   * @param int|null $pLanIdAct The ID of the language of which the name is selected.
+   * @param int|null $pLanIdTar The ID of the language of which the name is selected.
    *                            tinyint(3) unsigned
    * @param int|null $pLanId    The ID of the language for linguistic entities.
    *                            tinyint(3) unsigned
@@ -231,9 +231,9 @@ class TestDataLayer extends MySqlDataLayer
    * @throws MySqlDataLayerException
    * @throws ResultException
    */
-  public function abcBabelLanguageGetName(?int $pLanIdAct, ?int $pLanId): ?string
+  public function abcBabelLanguageGetName(?int $pLanIdTar, ?int $pLanId): ?string
   {
-    return $this->executeSingleton0('call abc_babel_language_get_name('.$this->quoteInt($pLanIdAct).','.$this->quoteInt($pLanId).')');
+    return $this->executeSingleton0('call abc_babel_language_get_name('.$this->quoteInt($pLanIdTar).','.$this->quoteInt($pLanId).')');
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -311,16 +311,16 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @param int|null $pTtgId    The ID of the text group.
    *                            tinyint(3) unsigned
-   * @param int|null $pLanIdAct The ID of the target language.
+   * @param int|null $pLanIdTar The ID of the target language.
    *                            tinyint(3) unsigned
    *
    * @return array[]
    *
    * @throws MySqlQueryErrorException
    */
-  public function abcBabelTextGroupGetAllTextsTranslator(?int $pTtgId, ?int $pLanIdAct): array
+  public function abcBabelTextGroupGetAllTextsTranslator(?int $pTtgId, ?int $pLanIdTar): array
   {
-    return $this->executeRows('call abc_babel_text_group_get_all_texts_translator('.$this->quoteInt($pTtgId).','.$this->quoteInt($pLanIdAct).')');
+    return $this->executeRows('call abc_babel_text_group_get_all_texts_translator('.$this->quoteInt($pTtgId).','.$this->quoteInt($pLanIdTar).')');
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -642,16 +642,16 @@ class TestDataLayer extends MySqlDataLayer
    *
    * @param int|null $pWgdId    The ID of the word group.
    *                            tinyint(3) unsigned
-   * @param int|null $pLanIdAct The ID of the target language.
+   * @param int|null $pLanIdTar The ID of the target language.
    *                            tinyint(3) unsigned
    *
    * @return array[]
    *
    * @throws MySqlQueryErrorException
    */
-  public function abcBabelWordGroupGetAllWordsTranslator(?int $pWgdId, ?int $pLanIdAct): array
+  public function abcBabelWordGroupGetAllWordsTranslator(?int $pWgdId, ?int $pLanIdTar): array
   {
-    return $this->executeRows('call abc_babel_word_group_get_all_words_translator('.$this->quoteInt($pWgdId).','.$this->quoteInt($pLanIdAct).')');
+    return $this->executeRows('call abc_babel_word_group_get_all_words_translator('.$this->quoteInt($pWgdId).','.$this->quoteInt($pLanIdTar).')');
   }
 
   //--------------------------------------------------------------------------------------------------------------------
@@ -676,7 +676,7 @@ class TestDataLayer extends MySqlDataLayer
    * Inserts a word group.
    *
    * @param string|null $pWdgName  The name of the word group.
-   *                               varchar(32) character set utf8 collation utf8_general_ci
+   *                               varchar(32) character set latin1 collation latin1_swedish_ci
    * @param string|null $pWdgLabel The label of the word group.
    *                               varchar(30) character set ascii collation ascii_general_ci
    *
@@ -697,7 +697,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param int|null    $pWdgId    The ID of the word group.
    *                               tinyint(3) unsigned
    * @param string|null $pWdgName  The new name of the word group.
-   *                               varchar(32) character set utf8 collation utf8_general_ci
+   *                               varchar(32) character set latin1 collation latin1_swedish_ci
    * @param string|null $pWdgLabel The new label of the word group.
    *                               varchar(30) character set ascii collation ascii_general_ci
    *
@@ -719,7 +719,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param string|null $pWrdLabel   The label of the new word.
    *                                 varchar(50) character set ascii collation ascii_general_ci
    * @param string|null $pWrdComment The comment on the new word.
-   *                                 varchar(255) character set utf8 collation utf8_general_ci
+   *                                 varchar(255) character set latin1 collation latin1_swedish_ci
    * @param string|null $pWdtText    The value of the new word.
    *                                 varchar(80) character set latin1 collation latin1_swedish_ci
    *
@@ -766,7 +766,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param string|null $pWrdLabel   The new label of the word.
    *                                 varchar(50) character set ascii collation ascii_general_ci
    * @param string|null $pWrdComment The new comment of the word.
-   *                                 varchar(255) character set utf8 collation utf8_general_ci
+   *                                 varchar(255) character set latin1 collation latin1_swedish_ci
    * @param string|null $pWdtText    The new value of the word.
    *                                 varchar(80) character set latin1 collation latin1_swedish_ci
    *
@@ -835,7 +835,7 @@ class TestDataLayer extends MySqlDataLayer
    * Selects the company ID given a company abbreviation.
    *
    * @param string|null $pCmpAbbr The company abbreviation.
-   *                              varchar(15) character set latin1 collation latin1_swedish_ci
+   *                              varchar(65532) character set latin1 collation latin1_swedish_ci
    *
    * @return int|null
    *
@@ -1102,7 +1102,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param int|null    $pRlgId     The rol ID of the role group.
    *                                smallint(5) unsigned
    * @param string|null $pRolName   The name of the role.
-   *                                varchar(32) character set utf8 collation utf8_general_ci
+   *                                varchar(32) character set latin1 collation latin1_swedish_ci
    * @param int|null    $pRolWeight The weight of the role.
    *                                smallint(6)
    * @param string|null $pRolLabel  The label of the role.
@@ -1149,7 +1149,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param int|null    $pRlgId     The ID of the role group.
    *                                smallint(5) unsigned
    * @param string|null $pRolName   The name of the role.
-   *                                varchar(32) character set utf8 collation utf8_general_ci
+   *                                varchar(32) character set latin1 collation latin1_swedish_ci
    * @param int|null    $pRolWeight The weight of the role.
    *                                smallint(6)
    * @param string|null $pRolLabel  The label of the role.
@@ -1585,6 +1585,22 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
+   * Selects all companies that are granted a functionality.
+   *
+   * @param int|null $pFunId The ID of the functionality.
+   *                         smallint(5) unsigned
+   *
+   * @return array[]
+   *
+   * @throws MySqlQueryErrorException
+   */
+  public function abcSystemFunctionalityGetGrantedCompanies(?int $pFunId): array
+  {
+    return $this->executeRows('call abc_system_functionality_get_granted_companies('.$this->quoteInt($pFunId).')');
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
    * Selects the pages to which a functionality grants access to.
    *
    * @param int|null $pFunId The ID of the functionality.
@@ -1861,6 +1877,22 @@ class TestDataLayer extends MySqlDataLayer
   public function abcSystemPageGetDetails(?int $pPagId, ?int $pLanId): array
   {
     return $this->executeRow1('call abc_system_page_get_details('.$this->quoteInt($pPagId).','.$this->quoteInt($pLanId).')');
+  }
+
+  //--------------------------------------------------------------------------------------------------------------------
+  /**
+   * Selects all companies that are granted access to a page.
+   *
+   * @param int|null $pPagId The ID of the page.
+   *                         smallint(5) unsigned
+   *
+   * @return array[]
+   *
+   * @throws MySqlQueryErrorException
+   */
+  public function abcSystemPageGetGrantedCompanies(?int $pPagId): array
+  {
+    return $this->executeRows('call abc_system_page_get_granted_companies('.$this->quoteInt($pPagId).')');
   }
 
   //--------------------------------------------------------------------------------------------------------------------

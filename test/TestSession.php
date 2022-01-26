@@ -34,7 +34,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function destroyAllSessions(): void
   {
@@ -43,7 +43,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function destroyAllSessionsOfUser(int $usrId): void
   {
@@ -52,7 +52,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function destroyOtherSessions(): void
   {
@@ -61,7 +61,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function getCsrfToken(): string
   {
@@ -70,7 +70,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function getLanId(): int
   {
@@ -79,7 +79,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function &getNamedSection(string $name, int $mode)
   {
@@ -88,7 +88,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function getSessionToken(): string
   {
@@ -97,7 +97,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function isAnonymous(): bool
   {
@@ -106,7 +106,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function login(int $usrId): void
   {
@@ -115,7 +115,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function logout(): void
   {
@@ -124,7 +124,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function save(): void
   {
@@ -133,7 +133,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function setLanId(int $lanId): void
   {
@@ -142,7 +142,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function start(): void
   {
@@ -151,7 +151,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function getHasFlashMessage(): bool
   {
@@ -160,7 +160,7 @@ class TestSession implements Session
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function setHasFlashMessage(bool $hasFlashMessage): void
   {

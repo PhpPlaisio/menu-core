@@ -11,10 +11,13 @@ export class CoreMenu
    */
   public static markActiveMenuItem(id: string): void
   {
-    $('#' + $.escapeSelector(id)).addClass('menu-active');
+    $('#' + $.escapeSelector(id))
+      .addClass('menu-is-active')
+      .children().addClass('menu-is-active');
   }
 
   //--------------------------------------------------------------------------------------------------------------------
 }
 
 //----------------------------------------------------------------------------------------------------------------------
+// Plaisio\Console\Helper\TypeScript\TypeScriptMarkHelper::md5: a69ae74b4cd6f65042ba77f8988ebedb

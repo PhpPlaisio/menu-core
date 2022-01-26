@@ -28,7 +28,7 @@ class CoreMenu extends PlaisioObject implements Menu
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function menu(int $mnuId, ?string $name = null): string
   {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace Plaisio\Menu;
 
 use Plaisio\Helper\Html;
+use Plaisio\Helper\RenderWalker;
 use Plaisio\PlaisioInterface;
 
 /**
@@ -49,7 +50,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * @inheritDoc
+   * @inheritdoc
    */
   public function menu(int $mnuId, ?string $name): string
   {
@@ -103,12 +104,17 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
    */
   protected function htmlMenu(array $items): string
   {
-    if (empty($items)) return '';
+    if (empty($items))
+    {
+      return '';
+    }
+
+    $walker = new RenderWalker('menu-'.$this->menu['mnu_name']);
 
     $struct = ['tag'   => 'nav',
-               'attr'  => ['class' => $this->classes(),
+               'attr'  => ['class' => $walker->getClasses('nav'),
                            'id'    => 'menu-'.$this->menu['mnu_name']],
-               'inner' => $this->structMenuHelper($items, 0)];
+               'inner' => $this->structMenuHelper($walker, $items, 0)];
 
     return Html::htmlNested($struct);
   }
@@ -198,12 +204,13 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
   /**
    * Helps to generate the HTML code of the menu.
    *
-   * @param array $items The subtree menu of items.
-   * @param int   $level The current level of the subtree.
+   * @param RenderWalker $walker Object for generating CSS class names.
+   * @param array        $items  The subtree menu of items.
+   * @param int          $level  The current level of the subtree.
    *
    * @return array
    */
-  protected function structMenuHelper(array $items, int $level): array
+  protected function structMenuHelper(RenderWalker $walker, array $items, int $level): array
   {
     $list = [];
     foreach ($items as $item)
@@ -224,34 +231,39 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
         $url = null;
       }
 
+      $classes = $this->classes(empty($item['children']), $level);
+      $additionClasses1 = array_merge($classes, [$item['mni_class1']]);
+      $additionClasses2 = array_merge($classes, [$item['mni_class2']]);
+      $additionClasses3 = array_merge($classes, [$item['mni_class3']]);
+      $additionClasses4 = array_merge($classes, [$item['mni_class4']]);
+
       $inner = [];
       if ($url!==null)
       {
         $inner[] = ['tag'   => 'a',
-                    'attr'  => ['class' => $item['mni_class2'],
+                    'attr'  => ['class' => $walker->getClasses('item-link', $additionClasses2),
                                 'href'  => $url],
                     'inner' => [['tag'  => 'span',
-                                 'attr' => ['class' => $item['mni_class3']],
+                                 'attr' => ['class' => $walker->getClasses('item-icon', $additionClasses3)],
                                  'html' => null],
                                 ['tag'  => 'span',
-                                 'attr' => ['class' => $item['mni_class4']],
+                                 'attr' => ['class' => $walker->getClasses('item-name', $additionClasses4)],
                                  'text' => $item['mni_text']]]];
       }
 
       if (!empty($item['children']))
       {
-        $inner[] = $this->structMenuHelper($item['children'], $level + 1);
+        $inner[] = $this->structMenuHelper($walker, $item['children'], $level + 1);
       }
 
       $list[] = ['tag'   => 'li',
-                 'attr'  => ['class' => array_merge($this->classes(empty($item['children']), $level),
-                                                    [$item['mni_class1']]),
+                 'attr'  => ['class' => $walker->getClasses('item', $additionClasses1),
                              'id'    => 'mni-'.$this->nub->obfuscator::encode($item['mni_id'], 'mni')],
                  'inner' => $inner];
     }
 
     return ['tag'   => 'ul',
-            'attr'  => ['class' => $this->classes(false, $level)],
+            'attr'  => ['class' => $walker->getClasses('list', $this->classes(false, $level))],
             'inner' => $list];
   }
 
@@ -266,7 +278,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
    */
   private function classes(bool $isLeave = false, ?int $level = null): array
   {
-    $classes = ['menu-'.$this->menu['mnu_name']];
+    $classes = [];
 
     if ($level!==null)
     {
@@ -275,7 +287,7 @@ class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
 
     if ($isLeave)
     {
-      $classes[] = 'menu-leave';
+      $classes[] = 'menu-is-leave';
     }
 
     return $classes;
