@@ -13,7 +13,7 @@ export class CoreMenu
   {
     $('#' + $.escapeSelector(id))
       .addClass('menu-is-active')
-      .children().addClass('menu-is-active');
+      .find('*').addClass('menu-is-active');
   }
 
   //--------------------------------------------------------------------------------------------------------------------
