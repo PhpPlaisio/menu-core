@@ -36,7 +36,7 @@ class TestDataLayer extends MySqlDataLayer
   /**
    * Selects non-zero if a user has the proper authorization for page. Otherwise, selects 0.
    *
-   * @param int|null $pCmpId The ID of the company of the user (safe guard).
+   * @param int|null $pCmpId The ID of the company of the user (safeguard).
    *                         smallint(5) unsigned
    * @param int|null $pProId The ID of the profile of the user.
    *                         smallint(5) unsigned
@@ -57,7 +57,7 @@ class TestDataLayer extends MySqlDataLayer
   /**
    * Selects info about a page for a user.
    *
-   * @param int|null    $pCmpId    The ID of the company of the user (safe guard).
+   * @param int|null    $pCmpId    The ID of the company of the user (safeguard).
    *                               smallint(5) unsigned
    * @param int|null    $pPagId    The ID of the page.
    *                               smallint(5) unsigned
@@ -82,7 +82,7 @@ class TestDataLayer extends MySqlDataLayer
   /**
    * Selects the page tabs for a user.
    *
-   * @param int|null $pCmpId The ID of the company of the user (safe guard).
+   * @param int|null $pCmpId The ID of the company of the user (safeguard).
    *                         smallint(5) unsigned
    * @param int|null $pPtbId The ID of the page tab.
    *                         tinyint(3) unsigned
@@ -108,9 +108,9 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Selects non-zero if a user has the proper authorization for page. Otherwise, selects 0.
+   * Selects whether a user has the proper authorization for page.
    *
-   * @param int|null $pCmpId The ID of the company of the user (safe guard).
+   * @param int|null $pCmpId The ID of the company of the user (safeguard).
    *                         smallint(5) unsigned
    * @param int|null $pUsrId The ID of the user.
    *                         int(10) unsigned
@@ -921,7 +921,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Selects all modules including a flag indication the the module is granted to the company.
+   * Selects all modules including a flag indication the module is granted to the company.
    *
    * @param int|null $pCmpId The ID of the company.
    *                         smallint(5) unsigned
@@ -995,7 +995,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Selects all functionalities of all modules granted to a company including a flag indication the the functionality
+   * Selects all functionalities of all modules granted to a company including a flag indication the functionality
    * is granted to a role.
    *
    * @param int|null $pCmpId The ID of the company.
@@ -1301,7 +1301,7 @@ class TestDataLayer extends MySqlDataLayer
   /**
    * Deletes cached menu HTML code for a profile
    *
-   * @param int|null $pCmpId The ID of the company (safe guard).
+   * @param int|null $pCmpId The ID of the company (safeguard).
    *                         smallint(5) unsigned
    * @param int|null $pProId The ID of the profile.
    *                         smallint(5) unsigned
@@ -1319,7 +1319,7 @@ class TestDataLayer extends MySqlDataLayer
   /**
    * Selects the cached (if any) HTML code of a menu.
    *
-   * @param int|null $pCmpId The ID of the company (safe guard).
+   * @param int|null $pCmpId The ID of the company (safeguard).
    *                         smallint(5) unsigned
    * @param int|null $pMnuId The ID of the menu.
    *                         smallint(5) unsigned
@@ -1342,7 +1342,7 @@ class TestDataLayer extends MySqlDataLayer
   /**
    * Caches the HTML code of a menu.
    *
-   * @param int|null    $pCmpId   The ID of the company (safe guard).
+   * @param int|null    $pCmpId   The ID of the company (safeguard).
    *                              smallint(5) unsigned
    * @param int|null    $pMnuId   The ID of the menu.
    *                              smallint(5) unsigned
@@ -1532,7 +1532,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Selects all pages including a flag indication the the page is part of a functionality.
+   * Selects all pages including a flag indication the page is part of a functionality.
    *
    * @param int|null $pFunId The ID of the functionality.
    *                         smallint(5) unsigned
@@ -1844,7 +1844,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Selects all functionalities including a flag indication the the functionality grant access to a page.
+   * Selects all functionalities including a flag indication the functionality grant access to a page.
    *
    * @param int|null $pPagId The ID of the page.
    *                         smallint(5) unsigned
