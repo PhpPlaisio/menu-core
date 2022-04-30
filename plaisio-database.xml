@@ -5,10 +5,10 @@
     </provides>
     <requires>
         <table>ABC_AUTH_COMPANY</table>
+        <table>ABC_AUTH_PAGE</table>
         <table>ABC_AUTH_PROFILE</table>
         <table>ABC_BABEL_LANGUAGE</table>
         <table>ABC_BABEL_WORD</table>
-        <table>AUT_PAGE</table>
     </requires>
     <scripts>
         <script>lib/ddl/0100_create_tables.sql</script>

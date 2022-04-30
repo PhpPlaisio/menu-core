@@ -1453,7 +1453,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Recomputes all profiles and makes tables AUT_PRO_ROL and AUT_PRO_PAG proper.
+   * Recomputes all profiles and makes tables ABC_AUTH_PRO_ROL and ABC_AUTH_PRO_PAG proper.
    *
    * @return int
    *
@@ -1466,7 +1466,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Recomputes all profiles and makes tables AUT_PRO_ROL and AUT_PRO_PAG proper as SP abc_profile_proper() but it removes
+   * Recomputes all profiles and makes tables ABC_AUTH_PRO_ROL and ABC_AUTH_PRO_PAG proper as SP abc_profile_proper() but it removes
    * obsolete profiles.
    *
    * @return int
@@ -2046,7 +2046,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param int|null    $pWrdId     The ID of the word for the name of the role group.
    *                                smallint(5) unsigned
    * @param int|null    $pRlgWeight The weight for sorting of the role group.
-   *                                smallint(5) unsigned
+   *                                smallint(6)
    * @param string|null $pRlgLabel  The label of the word group.
    *                                varchar(50) character set ascii collation ascii_general_ci
    *
@@ -2068,7 +2068,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param int|null    $pWrdId     @todo describe parameter
    *                                smallint(5) unsigned
    * @param int|null    $pRlgWeight @todo describe parameter
-   *                                smallint(5) unsigned
+   *                                smallint(6)
    * @param string|null $pRlgLabel  @todo describe parameter
    *                                varchar(50) character set ascii collation ascii_general_ci
    *

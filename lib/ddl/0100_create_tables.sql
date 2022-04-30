@@ -5,7 +5,7 @@
 /*  FileName : menu-core.ecm                                                      */
 /*  Platform : MySQL 5                                                            */
 /*  Version  : Concept                                                            */
-/*  Date     : donderdag 16 juli 2020                                             */
+/*  Date     : Saturday, April 30, 2022                                           */
 /*================================================================================*/
 /*================================================================================*/
 /* CREATE TABLES                                                                  */
@@ -26,7 +26,7 @@ The name of this menu.
 
 /*
 COMMENT ON COLUMN ABC_MENU.mnu_class
-The PHP class for generating the HMTL code of this menu.
+The PHP class for generating the HTML code of this menu.
 */
 
 CREATE TABLE ABC_MENU_CACHE (
@@ -182,7 +182,7 @@ ALTER TABLE ABC_MENU_ITEM
 
 ALTER TABLE ABC_MENU_ITEM
   ADD CONSTRAINT FK_ABC_MENU_ITEM_AUT_PAGE
-  FOREIGN KEY (pag_id) REFERENCES AUT_PAGE (pag_id);
+  FOREIGN KEY (pag_id) REFERENCES ABC_AUTH_PAGE (pag_id);
 
 ALTER TABLE ABC_MENU_ITEM_PAGE
   ADD CONSTRAINT FK_ABC_MENU_ITEM_PAGE_ABC_MENU_ITEM
@@ -190,7 +190,7 @@ ALTER TABLE ABC_MENU_ITEM_PAGE
 
 ALTER TABLE ABC_MENU_ITEM_PAGE
   ADD CONSTRAINT FK_ABC_MENU_ITEM_PAGE_AUT_PAGE
-  FOREIGN KEY (pag_id) REFERENCES AUT_PAGE (pag_id);
+  FOREIGN KEY (pag_id) REFERENCES ABC_AUTH_PAGE (pag_id);
 
 ALTER TABLE ABC_MENU_ITEM_PAGE
   ADD CONSTRAINT FK_ABC_MENU_ITEM_PAGE_ABC_MENU
