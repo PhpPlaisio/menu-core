@@ -30,7 +30,7 @@ begin
   from      ABC_MENU_ITEM       mni
   left join ABC_BABEL_WORD_TEXT wdt  on  wdt.wrd_id = mni.wrd_id and
                                          wdt.lan_id = p_lan_id
-  left join AUT_PAGE            pag  on  pag.pag_id = mni.pag_id
+  left join ABC_AUTH_PAGE       pag  on  pag.pag_id = mni.pag_id
   where  mni.mnu_id = p_mnu_id
   order by mni.mni_weight
   ;
