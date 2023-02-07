@@ -20,4 +20,4 @@ export class CoreMenu
 }
 
 //----------------------------------------------------------------------------------------------------------------------
-// Plaisio\Console\Helper\TypeScript\TypeScriptMarkHelper::md5: a69ae74b4cd6f65042ba77f8988ebedb
+// Plaisio\Console\TypeScript\Helper\MarkHelper::md5: 3951420a7c86828a1bd1af40e2e96b1c

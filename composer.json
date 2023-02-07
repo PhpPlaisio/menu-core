@@ -35,6 +35,7 @@
     "plaisio/cgi-core": "^1.8.0",
     "plaisio/company-resolver-uni": "^2.1.1",
     "plaisio/console-kernel": "^1.0.1",
+    "plaisio/console-type-script": "^1.0.0",
     "plaisio/core": "^0.29.0",
     "plaisio/language-resolver-core": "^1.4.0",
     "plaisio/obfuscator-core": "^3.2.0",

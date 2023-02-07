@@ -6,6 +6,7 @@
             <arg value="update"/>
         </exec>
 
+        <phing phingfile="build.xml" target="code-generation" haltonfailure="true"/>
         <phing phingfile="build.xml" target="kernel" haltonfailure="true"/>
         <phing phingfile="build.xml" target="outdated" haltonfailure="true"/>
     </target>
@@ -17,6 +18,7 @@
             <arg value="install"/>
         </exec>
 
+        <phing phingfile="build.xml" target="code-generation" haltonfailure="true"/>
         <phing phingfile="build.xml" target="kernel" haltonfailure="true"/>
         <phing phingfile="build.xml" target="outdated" haltonfailure="true"/>
     </target>
@@ -27,6 +29,14 @@
             <arg value="--ansi"/>
             <arg value="outdated"/>
             <arg value="--direct"/>
+        </exec>
+    </target>
+
+    <target name="code-generation">
+        <exec executable="bin/plaisio" checkreturn="true" passthru="true">
+            <arg value="--ansi"/>
+            <arg value="plaisio:type-script-automator"/>
+            <arg value="--once"/>
         </exec>
     </target>
 
