@@ -240,7 +240,7 @@ class TestDataLayer extends MySqlDataLayer
   /**
    * Deletes a text.
    *
-   * @param int|null $pTxtId The ID of the text to be be deleted.
+   * @param int|null $pTxtId The ID of the text to be deleted.
    *                         smallint(5) unsigned
    *
    * @return int
@@ -416,17 +416,25 @@ class TestDataLayer extends MySqlDataLayer
     if ($this->logQueries)
     {
       $time0 = microtime(true);
+    }
 
+    try
+    {
       $success = @$stmt->execute();
-      if (!$success) throw $this->queryError('mysqli_stmt::execute', $query);
+    }
+    catch (\mysqli_sql_exception)
+    {
+      $success = false;
+    }
+    if (!$success)
+    {
+      throw $this->queryError('mysqli_stmt::execute', $query);
+    }
 
+    if ($this->logQueries)
+    {
       $this->queryLog[] = ['query' => $query,
                            'time'  => microtime(true) - $time0];
-    }
-    else
-    {
-      $success = $stmt->execute();
-      if (!$success) throw $this->queryError('mysqli_stmt::execute', $query);
     }
 
     $row = [];
@@ -486,17 +494,25 @@ class TestDataLayer extends MySqlDataLayer
     if ($this->logQueries)
     {
       $time0 = microtime(true);
+    }
 
+    try
+    {
       $success = @$stmt->execute();
-      if (!$success) throw $this->queryError('mysqli_stmt::execute', $query);
+    }
+    catch (\mysqli_sql_exception)
+    {
+      $success = false;
+    }
+    if (!$success)
+    {
+      throw $this->queryError('mysqli_stmt::execute', $query);
+    }
 
+    if ($this->logQueries)
+    {
       $this->queryLog[] = ['query' => $query,
                            'time'  => microtime(true) - $time0];
-    }
-    else
-    {
-      $success = $stmt->execute();
-      if (!$success) throw $this->queryError('mysqli_stmt::execute', $query);
     }
 
     $ret = $this->mysqli->affected_rows;
@@ -546,17 +562,25 @@ class TestDataLayer extends MySqlDataLayer
     if ($this->logQueries)
     {
       $time0 = microtime(true);
+    }
 
+    try
+    {
       $success = @$stmt->execute();
-      if (!$success) throw $this->queryError('mysqli_stmt::execute', $query);
+    }
+    catch (\mysqli_sql_exception)
+    {
+      $success = false;
+    }
+    if (!$success)
+    {
+      throw $this->queryError('mysqli_stmt::execute', $query);
+    }
 
+    if ($this->logQueries)
+    {
       $this->queryLog[] = ['query' => $query,
                            'time'  => microtime(true) - $time0];
-    }
-    else
-    {
-      $success = $stmt->execute();
-      if (!$success) throw $this->queryError('mysqli_stmt::execute', $query);
     }
 
     $ret = $this->mysqli->affected_rows;
@@ -571,7 +595,7 @@ class TestDataLayer extends MySqlDataLayer
   /**
    * Deletes a word.
    *
-   * @param int|null $pWrdId The ID of the word to be be deleted.
+   * @param int|null $pWrdId The ID of the word to be deleted.
    *                         smallint(5) unsigned
    *
    * @return int
@@ -1376,17 +1400,25 @@ class TestDataLayer extends MySqlDataLayer
     if ($this->logQueries)
     {
       $time0 = microtime(true);
+    }
 
+    try
+    {
       $success = @$stmt->execute();
-      if (!$success) throw $this->queryError('mysqli_stmt::execute', $query);
+    }
+    catch (\mysqli_sql_exception)
+    {
+      $success = false;
+    }
+    if (!$success)
+    {
+      throw $this->queryError('mysqli_stmt::execute', $query);
+    }
 
+    if ($this->logQueries)
+    {
       $this->queryLog[] = ['query' => $query,
                            'time'  => microtime(true) - $time0];
-    }
-    else
-    {
-      $success = $stmt->execute();
-      if (!$success) throw $this->queryError('mysqli_stmt::execute', $query);
     }
 
     $ret = $this->mysqli->affected_rows;
@@ -1635,7 +1667,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Inserts an new functionality.
+   * Inserts a new functionality.
    *
    * @param int|null $pMdlId The ID on the module of the new functionality.
    *                         smallint(5) unsigned
