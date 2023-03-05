@@ -19,7 +19,7 @@
     "plaisio/helper-html": "^4.0.0",
     "plaisio/kernel": "^3.1.1",
     "plaisio/menu": "^1.0.0",
-    "plaisio/profile": "dev-master",
+    "plaisio/profile": "^0.1.0",
     "plaisio/session": "^4.0.0",
     "plaisio/web-assets": "^3.0.0"
   },
@@ -53,6 +53,9 @@
   },
   "config": {
     "bin-dir": "bin/",
-    "sort-packages": true
+    "sort-packages": true,
+    "allow-plugins": {
+      "phing/phing-composer-configurator": true
+    }
   }
 }
