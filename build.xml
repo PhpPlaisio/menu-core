@@ -1,38 +1,37 @@
 <project name="PhpPlaisio: Core Menu" default="build" basedir=".">
-    <!-- Update dependencies -->
+    <!-- Run composer update and executes various other updates -->
     <target name="update">
         <exec executable="composer" checkreturn="true" passthru="true">
             <arg value="--ansi"/>
             <arg value="update"/>
         </exec>
-
-        <phing phingfile="build.xml" target="code-generation" haltonfailure="true"/>
-        <phing phingfile="build.xml" target="kernel" haltonfailure="true"/>
-        <phing phingfile="build.xml" target="outdated" haltonfailure="true"/>
-    </target>
-
-    <!-- Install dependencies -->
-    <target name="install">
-        <exec executable="composer" checkreturn="true" passthru="true">
+        <exec executable="npm" checkreturn="true" passthru="true">
             <arg value="--ansi"/>
-            <arg value="install"/>
+            <arg value="update"/>
         </exec>
-
         <phing phingfile="build.xml" target="code-generation" haltonfailure="true"/>
         <phing phingfile="build.xml" target="kernel" haltonfailure="true"/>
         <phing phingfile="build.xml" target="outdated" haltonfailure="true"/>
     </target>
 
-    <!-- Show outdated dependencies -->
+    <!-- Show outdated packages -->
     <target name="outdated">
-        <exec executable="composer" checkreturn="true" passthru="true">
+        <exec executable="composer" checkreturn="false" passthru="true">
             <arg value="--ansi"/>
             <arg value="outdated"/>
             <arg value="--direct"/>
         </exec>
+        <exec executable="npm" checkreturn="false" passthru="true">
+            <arg value="--ansi"/>
+            <arg value="outdated"/>
+        </exec>
     </target>
 
     <target name="code-generation">
+        <exec executable="bin/plaisio" checkreturn="true" passthru="true">
+            <arg value="--ansi"/>
+            <arg value="plaisio:assets"/>
+        </exec>
         <exec executable="bin/plaisio" checkreturn="true" passthru="true">
             <arg value="--ansi"/>
             <arg value="plaisio:type-script-automator"/>
