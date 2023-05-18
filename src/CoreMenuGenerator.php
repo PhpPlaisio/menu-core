@@ -10,6 +10,7 @@ use Plaisio\PlaisioInterface;
 /**
  * Generator of HTML code of menus.
  */
+#[\AllowDynamicProperties]
 class CoreMenuGenerator implements MenuGenerator, PlaisioInterface
 {
   //--------------------------------------------------------------------------------------------------------------------
