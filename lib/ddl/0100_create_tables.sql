@@ -5,7 +5,7 @@
 /*  FileName : menu-core.ecm                                                      */
 /*  Platform : MySQL 5                                                            */
 /*  Version  : Concept                                                            */
-/*  Date     : Saturday, April 30, 2022                                           */
+/*  Date     : Thursday, May 18, 2023                                             */
 /*================================================================================*/
 /*================================================================================*/
 /* CREATE TABLES                                                                  */
@@ -20,13 +20,28 @@ CREATE TABLE ABC_MENU (
 );
 
 /*
+COMMENT ON TABLE ABC_MENU
+Website menu.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU.mnu_id
+The PK of the menu.
+*/
+
+/*
 COMMENT ON COLUMN ABC_MENU.mnu_name
-The name of this menu.
+The name of the menu.
 */
 
 /*
 COMMENT ON COLUMN ABC_MENU.mnu_class
-The PHP class for generating the HTML code of this menu.
+The PHP class for generating the HTML code of the menu.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU.mnu_label
+The stratum label of the menu.
 */
 
 CREATE TABLE ABC_MENU_CACHE (
@@ -40,6 +55,16 @@ CREATE TABLE ABC_MENU_CACHE (
 );
 
 /*
+COMMENT ON TABLE ABC_MENU_CACHE
+The cached HTML code of a website menu.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_CACHE.mnc_id
+The ID of the cached HTML code of the menu.
+*/
+
+/*
 COMMENT ON COLUMN ABC_MENU_CACHE.mnu_id
 The ID of the menu.
 */
@@ -51,7 +76,7 @@ The ID of the company.
 
 /*
 COMMENT ON COLUMN ABC_MENU_CACHE.lan_id
-The ID of the langugae.
+The ID of the language of the menu.
 */
 
 /*
@@ -61,7 +86,7 @@ The ID of the profile.
 
 /*
 COMMENT ON COLUMN ABC_MENU_CACHE.mnc_html
-The HMTL code of the menu.
+The cached HTML code of the menu.
 */
 
 CREATE TABLE ABC_MENU_ITEM (
@@ -82,8 +107,33 @@ CREATE TABLE ABC_MENU_ITEM (
 );
 
 /*
+COMMENT ON TABLE ABC_MENU_ITEM
+A menu item in a website menu.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM.mni_id
+The PK of the menu item.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM.mni_id_parent
+The ID of the parent menu item of the menu item.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM.mnu_id
+The ID of the menu.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM.pag_id
+The ID of the page to which the menu item is linking.
+*/
+
+/*
 COMMENT ON COLUMN ABC_MENU_ITEM.wrd_id
-The text of this menu item.
+The text of the menu item.
 */
 
 /*
@@ -108,22 +158,22 @@ The CSS class for second span element
 
 /*
 COMMENT ON COLUMN ABC_MENU_ITEM.mni_hide_anonymous
-Hide this menu item for anonymous user.
+Whether to hide the menu item for an anonymous user.
 */
 
 /*
 COMMENT ON COLUMN ABC_MENU_ITEM.mni_hide_identified
-Hide this menu item for identified user.
+Whether  to hide the menu item for an identified user.
 */
 
 /*
 COMMENT ON COLUMN ABC_MENU_ITEM.mni_depth
-The depth of this menu item.
+The depth of the menu item.
 */
 
 /*
 COMMENT ON COLUMN ABC_MENU_ITEM.mni_weight
-The weight of this menu item for sorting.
+The weight of the menu item for sorting.
 */
 
 CREATE TABLE ABC_MENU_ITEM_PAGE (
@@ -139,6 +189,26 @@ COMMENT ON TABLE ABC_MENU_ITEM_PAGE
 The pages associated with a menu item.
 */
 
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM_PAGE.mip_id
+The PK of the associated page of a menu item.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM_PAGE.mni_id
+The ID of the menu item.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM_PAGE.mnu_id
+The ID of the menu.
+*/
+
+/*
+COMMENT ON COLUMN ABC_MENU_ITEM_PAGE.pag_id
+The ID of the associated page.
+*/
+
 /*================================================================================*/
 /* CREATE INDEXES                                                                 */
 /*================================================================================*/
@@ -146,6 +216,11 @@ The pages associated with a menu item.
 CREATE UNIQUE INDEX IX_ABC_MENU_CACHE1 ON ABC_MENU_CACHE (lan_id, mnu_id, pro_id);
 
 CREATE UNIQUE INDEX IX_ABC_MENU_ITEM_PAGE1 ON ABC_MENU_ITEM_PAGE (mnu_id, pag_id, mni_id);
+
+/*
+COMMENT ON INDEX IX_ABC_MENU_ITEM_PAGE1
+Covering index for finding menu item associated with a page.
+*/
 
 /*================================================================================*/
 /* CREATE FOREIGN KEYS                                                            */
