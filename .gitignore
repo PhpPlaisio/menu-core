@@ -10,6 +10,7 @@
 /test/etc/routines.json
 /test/report/
 /vendor/
+/www/css/
 /www/js/**/*.js
 /www/js/**/*.map
 /www/js/Plaisio/Core/
