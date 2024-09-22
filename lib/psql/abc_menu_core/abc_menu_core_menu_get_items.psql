@@ -6,32 +6,34 @@
  *
  * @type rows
  */
-create procedure abc_menu_core_menu_get_items(in p_mnu_id @abc_menu_cache.mnu_id%type@,
-                                              in p_lan_id @abc_babel_word_text.lan_id%type@)
-reads sql data
+create procedure abc_menu_core_menu_get_items
+(
+  in p_mnu_id smallint(5) unsigned, -- type: ABC_MENU.mnu_id
+  in p_lan_id tinyint(3) unsigned --   type: ABC_BABEL_WORD_TEXT.lan_id
+)
+  reads sql data
 begin
   select mni.mni_id
-  ,      mni.mni_id_parent
-  ,      mni.mnu_id
-  ,      mni.wrd_id
-  ,      mni.mni_class1
-  ,      mni.mni_class2
-  ,      mni.mni_class3
-  ,      mni.mni_class4
-  ,      mni.mni_hide_anonymous
-  ,      mni.mni_hide_identified
-  ,      mni.mni_depth
-  ,      mni.mni_weight
+       , mni.mni_id_parent
+       , mni.mnu_id
+       , mni.wrd_id
+       , mni.mni_class1
+       , mni.mni_class2
+       , mni.mni_class3
+       , mni.mni_class4
+       , mni.mni_hide_anonymous
+       , mni.mni_hide_identified
+       , mni.mni_depth
+       , mni.mni_weight
 
-  ,      wdt.wdt_text             as mni_text
+       , wdt.wdt_text as mni_text
 
-  ,      pag.pag_id
-  ,      pag.pag_alias
-  from      ABC_MENU_ITEM       mni
-  left join ABC_BABEL_WORD_TEXT wdt  on  wdt.wrd_id = mni.wrd_id and
-                                         wdt.lan_id = p_lan_id
-  left join ABC_AUTH_PAGE       pag  on  pag.pag_id = mni.pag_id
-  where  mni.mnu_id = p_mnu_id
-  order by mni.mni_weight
-  ;
+       , pag.pag_id
+       , pag.pag_alias
+  from ABC_MENU_ITEM            mni
+  left join ABC_BABEL_WORD_TEXT wdt on wdt.wrd_id = mni.wrd_id and --
+                                       wdt.lan_id = p_lan_id
+  left join ABC_AUTH_PAGE       pag on pag.pag_id = mni.pag_id
+  where mni.mnu_id = p_mnu_id
+  order by mni.mni_weight;
 end

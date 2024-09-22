@@ -9,24 +9,25 @@
  *
  * @type none
  */
-create procedure abc_menu_core_cache_put(in p_cmp_id   @abc_menu_cache.cmp_id%type@,
-                                         in p_mnu_id   @abc_menu_cache.mnu_id%type@,
-                                         in p_lan_id   @abc_menu_cache.lan_id%type@,
-                                         in p_pro_id   @abc_menu_cache.pro_id%type@,
-                                         in p_mnc_html @abc_menu_cache.mnc_html%type@)
-reads sql data
+create procedure abc_menu_core_cache_put
+(
+  in p_cmp_id   smallint(5) unsigned, --          type: ABC_MENU_CACHE.cmp_id
+  in p_mnu_id   smallint(5) unsigned, --          type: ABC_MENU_CACHE.mnu_id
+  in p_lan_id   tinyint(3) unsigned, --           type: ABC_MENU_CACHE.lan_id
+  in p_pro_id   smallint(5) unsigned, --          type: ABC_MENU_CACHE.pro_id
+  in p_mnc_html longtext character set utf8mb4 -- type: ABC_MENU_CACHE.mnc_html
+)
+  reads sql data
 begin
-  insert into ABC_MENU_CACHE(mnu_id
-  ,                          cmp_id
-  ,                          lan_id
-  ,                          pro_id
-  ,                          mnc_html)
-  values( p_mnu_id
-  ,       p_cmp_id
-  ,       p_lan_id
-  ,       p_pro_id
-  ,       p_mnc_html )
-  on duplicate key
-  update mnc_html = p_mnc_html
-  ;
+  insert into ABC_MENU_CACHE( mnu_id
+                            , cmp_id
+                            , lan_id
+                            , pro_id
+                            , mnc_html )
+  values ( p_mnu_id
+         , p_cmp_id
+         , p_lan_id
+         , p_pro_id
+         , p_mnc_html )
+  on duplicate key update mnc_html = p_mnc_html;
 end

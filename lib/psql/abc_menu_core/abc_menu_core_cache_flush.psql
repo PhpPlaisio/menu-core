@@ -5,12 +5,15 @@
  *
  * @type none
  */
-create procedure abc_menu_core_cache_flush(in p_cmp_id @abc_menu_cache.cmp_id%type@)
-modifies sql data
+create procedure abc_menu_core_cache_flush
+(
+  in p_cmp_id smallint(5) unsigned -- type: ABC_MENU_CACHE.cmp_id
+)
+  modifies sql data
 begin
-  delete from ABC_MENU_CACHE
-  where  cmp_id = p_cmp_id
-  ;
+  delete
+  from ABC_MENU_CACHE
+  where cmp_id = p_cmp_id;
 
   -- alter table ABC_MENU_CACHE auto_increment null;
 end

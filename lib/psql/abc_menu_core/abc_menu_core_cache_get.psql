@@ -8,17 +8,19 @@
  *
  * @type row0
  */
-create procedure abc_menu_core_cache_get(in p_cmp_id @abc_menu_cache.cmp_id%type@,
-                                         in p_mnu_id @abc_menu_cache.mnu_id%type@,
-                                         in p_lan_id @abc_menu_cache.lan_id%type@,
-                                         in p_pro_id @abc_menu_cache.pro_id%type@)
-reads sql data
+create procedure abc_menu_core_cache_get
+(
+  in p_cmp_id smallint(5) unsigned, -- type: ABC_MENU_CACHE.cmp_id
+  in p_mnu_id smallint(5) unsigned, -- type: ABC_MENU_CACHE.mnu_id
+  in p_lan_id tinyint(3) unsigned, --  type: ABC_MENU_CACHE.lan_id
+  in p_pro_id smallint(5) unsigned --  type: ABC_MENU_CACHE.pro_id
+)
+  reads sql data
 begin
   select mnc_html
-  from   ABC_MENU_CACHE
-  where  cmp_id = p_cmp_id
-  and    mnu_id = p_mnu_id
-  and    lan_id = p_lan_id
-  and    pro_id = p_pro_id
-  ;
+  from ABC_MENU_CACHE
+  where cmp_id = p_cmp_id
+    and mnu_id = p_mnu_id
+    and lan_id = p_lan_id
+    and pro_id = p_pro_id;
 end
