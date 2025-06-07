@@ -11,11 +11,11 @@
  */
 create procedure abc_menu_core_cache_put
 (
-  in p_cmp_id   smallint(5) unsigned, --          type: ABC_MENU_CACHE.cmp_id
-  in p_mnu_id   smallint(5) unsigned, --          type: ABC_MENU_CACHE.mnu_id
-  in p_lan_id   tinyint(3) unsigned, --           type: ABC_MENU_CACHE.lan_id
-  in p_pro_id   smallint(5) unsigned, --          type: ABC_MENU_CACHE.pro_id
-  in p_mnc_html longtext character set utf8mb4 -- type: ABC_MENU_CACHE.mnc_html
+  in p_cmp_id   smallint(5) unsigned, --         type: ABC_MENU_CACHE.cmp_id
+  in p_mnu_id   smallint(5) unsigned, --         type: ABC_MENU_CACHE.mnu_id
+  in p_lan_id   tinyint(3) unsigned, --          type: ABC_MENU_CACHE.lan_id
+  in p_pro_id   smallint(5) unsigned, --         type: ABC_MENU_CACHE.pro_id
+  in p_mnc_html longtext character set latin1 -- type: ABC_MENU_CACHE.mnc_html
 )
   reads sql data
 begin

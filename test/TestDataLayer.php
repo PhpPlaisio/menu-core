@@ -3,8 +3,8 @@ declare(strict_types=1);
 
 namespace Plaisio\Menu\Test;
 
-use SetBased\Stratum\MySql\Exception\MySqlDataLayerException;
 use SetBased\Stratum\Middle\Exception\ResultException;
+use SetBased\Stratum\MySql\Exception\MySqlDataLayerException;
 use SetBased\Stratum\MySql\Exception\MySqlQueryErrorException;
 use SetBased\Stratum\MySql\MySqlDataLayer;
 
@@ -34,7 +34,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Selects non-zero if a user has the proper authorization for page. Otherwise, selects 0.
+   * Selects whether a user has the proper authorization for page.
    *
    * @param int|null $pCmpId The ID of the company of the user (safeguard).
    *                         smallint(5) unsigned
@@ -66,7 +66,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param int|null    $pLanId    The ID of the language for linguistic entities.
    *                               tinyint(3) unsigned
    * @param string|null $pPagAlias The alias for the request page.
-   *                               varchar(65532) character set latin1 collation latin1_swedish_ci
+   *                               varchar(32) character set latin1 collation latin1_swedish_ci
    *
    * @return array|null
    *
@@ -99,9 +99,15 @@ class TestDataLayer extends MySqlDataLayer
   {
     $result = $this->query('call abc_auth_get_page_tabs('.$this->quoteInt($pCmpId).','.$this->quoteInt($pPtbId).','.$this->quoteInt($pProId).','.$this->quoteInt($pLanId).')');
     $ret = [];
-    while (($row = $result->fetch_array(MYSQLI_ASSOC))) $ret[$row['pag_id']] = $row;
+    while (($row = $result->fetch_array(MYSQLI_ASSOC)))
+    {
+      $ret[$row['pag_id']] = $row;
+    }
     $result->free();
-    if ($this->mysqli->more_results()) $this->mysqli->next_result();
+    if ($this->mysqli->more_results())
+    {
+      $this->mysqli->next_result();
+    }
 
     return $ret;
   }
@@ -139,9 +145,15 @@ class TestDataLayer extends MySqlDataLayer
   {
     $result = $this->query('call abc_babel_core_internal_code_map()');
     $ret = [];
-    while (($row = $result->fetch_array(MYSQLI_NUM))) $ret[$row[0]] = $row[1];
+    while (($row = $result->fetch_array(MYSQLI_NUM)))
+    {
+      $ret[$row[0]] = $row[1];
+    }
     $result->free();
-    if ($this->mysqli->more_results()) $this->mysqli->next_result();
+    if ($this->mysqli->more_results())
+    {
+      $this->mysqli->next_result();
+    }
 
     return $ret;
   }
@@ -402,11 +414,17 @@ class TestDataLayer extends MySqlDataLayer
   {
     $query = 'call abc_babel_text_insert_text('.$this->quoteInt($pTtgId).','.$this->quoteString($pTxtLabel).',?,?)';
     $stmt  = @$this->mysqli->prepare($query);
-    if (!$stmt) throw $this->dataLayerError('mysqli::prepare');
+    if (!$stmt)
+    {
+      throw $this->dataLayerError('mysqli::prepare');
+    }
 
     $null = null;
     $success = @$stmt->bind_param('bb', $null, $null);
-    if (!$success) throw $this->dataLayerError('mysqli_stmt::bind_param');
+    if (!$success)
+    {
+      throw $this->dataLayerError('mysqli_stmt::bind_param');
+    }
 
     $this->getMaxAllowedPacket();
 
@@ -452,10 +470,19 @@ class TestDataLayer extends MySqlDataLayer
     }
 
     $stmt->close();
-    if ($this->mysqli->more_results()) $this->mysqli->next_result();
+    if ($this->mysqli->more_results())
+    {
+      $this->mysqli->next_result();
+    }
 
-    if ($b===false) throw $this->dataLayerError('mysqli_stmt::fetch');
-    if (sizeof($tmp)!=1) throw new ResultException([1], sizeof($tmp), $query);
+    if ($b===false)
+    {
+      throw $this->dataLayerError('mysqli_stmt::fetch');
+    }
+    if (sizeof($tmp)!==1)
+    {
+      throw new ResultException([1], sizeof($tmp), $query);
+    }
 
     return $tmp[0][0];
   }
@@ -481,11 +508,17 @@ class TestDataLayer extends MySqlDataLayer
   {
     $query = 'call abc_babel_text_translate_text('.$this->quoteInt($pTxtId).','.$this->quoteInt($pLanId).',?)';
     $stmt  = @$this->mysqli->prepare($query);
-    if (!$stmt) throw $this->dataLayerError('mysqli::prepare');
+    if (!$stmt)
+    {
+      throw $this->dataLayerError('mysqli::prepare');
+    }
 
     $null = null;
     $success = @$stmt->bind_param('b', $null);
-    if (!$success) throw $this->dataLayerError('mysqli_stmt::bind_param');
+    if (!$success)
+    {
+      throw $this->dataLayerError('mysqli_stmt::bind_param');
+    }
 
     $this->getMaxAllowedPacket();
 
@@ -518,7 +551,10 @@ class TestDataLayer extends MySqlDataLayer
     $ret = $this->mysqli->affected_rows;
 
     $stmt->close();
-    if ($this->mysqli->more_results()) $this->mysqli->next_result();
+    if ($this->mysqli->more_results())
+    {
+      $this->mysqli->next_result();
+    }
 
     return $ret;
   }
@@ -548,11 +584,17 @@ class TestDataLayer extends MySqlDataLayer
   {
     $query = 'call abc_babel_text_update_details('.$this->quoteInt($pTxtId).','.$this->quoteInt($pTtgId).','.$this->quoteString($pTxtLabel).',?,?)';
     $stmt  = @$this->mysqli->prepare($query);
-    if (!$stmt) throw $this->dataLayerError('mysqli::prepare');
+    if (!$stmt)
+    {
+      throw $this->dataLayerError('mysqli::prepare');
+    }
 
     $null = null;
     $success = @$stmt->bind_param('bb', $null, $null);
-    if (!$success) throw $this->dataLayerError('mysqli_stmt::bind_param');
+    if (!$success)
+    {
+      throw $this->dataLayerError('mysqli_stmt::bind_param');
+    }
 
     $this->getMaxAllowedPacket();
 
@@ -586,7 +628,10 @@ class TestDataLayer extends MySqlDataLayer
     $ret = $this->mysqli->affected_rows;
 
     $stmt->close();
-    if ($this->mysqli->more_results()) $this->mysqli->next_result();
+    if ($this->mysqli->more_results())
+    {
+      $this->mysqli->next_result();
+    }
 
     return $ret;
   }
@@ -830,7 +875,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param int|null $pCmpId The ID of the company.
    *                         smallint(5) unsigned
    * @param int|null $pLanId The ID of the language for linguistic entities.
-   *                         smallint(5) unsigned
+   *                         tinyint(3) unsigned
    *
    * @return array[]
    *
@@ -1144,7 +1189,7 @@ class TestDataLayer extends MySqlDataLayer
 
   //--------------------------------------------------------------------------------------------------------------------
   /**
-   * Grants a functionality ro a role.
+   * Grants a functionality to a role.
    *
    * @param int|null $pCmpId The ID of the company.
    *                         smallint(5) unsigned
@@ -1213,7 +1258,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param int|null $pCmpId The ID of the company.
    *                         smallint(5) unsigned
    * @param int|null $pLanId The ID of the language for linguistic entities.
-   *                         smallint(5) unsigned
+   *                         tinyint(3) unsigned
    *
    * @return array[]
    *
@@ -1233,7 +1278,7 @@ class TestDataLayer extends MySqlDataLayer
    * @param int|null $pPagId The ID of the page that must be deleted.
    *                         smallint(5) unsigned
    * @param int|null $pLanId The ID of the language for linguistic entities.
-   *                         smallint(5) unsigned
+   *                         tinyint(3) unsigned
    *
    * @return array
    *
@@ -1387,11 +1432,17 @@ class TestDataLayer extends MySqlDataLayer
   {
     $query = 'call abc_menu_core_cache_put('.$this->quoteInt($pCmpId).','.$this->quoteInt($pMnuId).','.$this->quoteInt($pLanId).','.$this->quoteInt($pProId).',?)';
     $stmt  = @$this->mysqli->prepare($query);
-    if (!$stmt) throw $this->dataLayerError('mysqli::prepare');
+    if (!$stmt)
+    {
+      throw $this->dataLayerError('mysqli::prepare');
+    }
 
     $null = null;
     $success = @$stmt->bind_param('b', $null);
-    if (!$success) throw $this->dataLayerError('mysqli_stmt::bind_param');
+    if (!$success)
+    {
+      throw $this->dataLayerError('mysqli_stmt::bind_param');
+    }
 
     $this->getMaxAllowedPacket();
 
@@ -1424,7 +1475,10 @@ class TestDataLayer extends MySqlDataLayer
     $ret = $this->mysqli->affected_rows;
 
     $stmt->close();
-    if ($this->mysqli->more_results()) $this->mysqli->next_result();
+    if ($this->mysqli->more_results())
+    {
+      $this->mysqli->next_result();
+    }
 
     return $ret;
   }
